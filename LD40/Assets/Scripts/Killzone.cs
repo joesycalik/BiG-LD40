@@ -8,7 +8,7 @@ public class Killzone : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            other.Respawn();
+            //other.Respawn();
         }
     }
 }
