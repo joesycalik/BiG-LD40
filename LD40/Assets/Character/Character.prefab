@@ -465,7 +465,7 @@ MonoBehaviour:
   facingRight: 1
   currentSpeedMultiplier: 1
   maxRunSpeed: 10
-  jumpForce: 400
+  jumpForce: 600
   groundLayer:
     serializedVersion: 2
     m_Bits: 1
