@@ -20,8 +20,9 @@ public class Gem : MonoBehaviour
     {
         transform.SetParent(null);
         var rb = GetComponent<Rigidbody2D>();
+        rb.bodyType = RigidbodyType2D.Dynamic;
         rb.simulated = true;
-        rb.AddForce(new Vector3(Random.Range(-100f, 100f), 100f, 0));
+        rb.AddForce(new Vector3(Random.Range(-400f, 400f), 300f, 0));
         var collider = GetComponent<Collider2D>();
         collider.enabled = true;
         Invoke("MakeAvailable", 2);
@@ -29,6 +30,8 @@ public class Gem : MonoBehaviour
 
     private void MakeAvailable()
     {
+        var rb = GetComponent<Rigidbody2D>();
+        rb.bodyType = RigidbodyType2D.Static;
         isAvailable = true;
     }
 }
