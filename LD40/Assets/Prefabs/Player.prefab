@@ -458,8 +458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29556bd838ef99b43b55d2fd9a074246, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerID: 0
-  tintableSprite: {fileID: 0}
+  player: 0
   feet: {fileID: 4441173471510698}
   shootPoint: {fileID: 4525256838714490}
   gemPoint: {fileID: 4496533201411002}
@@ -472,8 +471,8 @@ MonoBehaviour:
     m_Bits: 1
   projectilePrefab: {fileID: 114528715580775330, guid: 7e2abae18f33e614080c23a2b26fa328,
     type: 2}
-  projectileForce: 250
-  fireRate: 1
+  projectileForce: 100
+  fireRate: 2
   gems: []
   gemSpeedCurve:
     serializedVersion: 2
@@ -499,7 +498,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  hitPauseDuration: 1
 --- !u!212 &212041851287135498
 SpriteRenderer:
   m_ObjectHideFlags: 1
