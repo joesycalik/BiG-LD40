@@ -210,7 +210,6 @@ public class Player : MonoBehaviour
         if (spawnpoint == null) Debug.LogError("Can't find an GameObject tagged SpawnPoint", this);
         
         transform.position =new Vector3(spawnpoint.transform.position.x, spawnpoint.transform.position.y, spawnpoint.transform.position.z);
-
     }
 
 }
