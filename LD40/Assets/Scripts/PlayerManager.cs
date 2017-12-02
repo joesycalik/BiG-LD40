@@ -10,6 +10,13 @@ public class PlayerManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         manager = (GameManager)FindObjectOfType(typeof(GameManager));
+
+        //Debuggery
+        if (manager == null)
+        {
+            manager = new GameManager();
+        }
+
         for (int i = 0; i < manager.playerCount; i++)
         {
             players[i].gameObject.SetActive(true);
