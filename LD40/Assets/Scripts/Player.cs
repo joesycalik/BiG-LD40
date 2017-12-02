@@ -208,7 +208,9 @@ public class Player : MonoBehaviour
     {
         var spawnpoint = GameObject.FindGameObjectWithTag("Spawnpoint");
         if (spawnpoint == null) Debug.LogError("Can't find an GameObject tagged SpawnPoint", this);
-        rb.MovePosition(new Vector2(spawnpoint.transform.position.x, spawnpoint.transform.position.y));
+        
+        transform.position =new Vector3(spawnpoint.transform.position.x, spawnpoint.transform.position.y, spawnpoint.transform.position.z);
+
     }
 
 }
