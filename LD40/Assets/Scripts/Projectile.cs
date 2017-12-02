@@ -6,7 +6,7 @@ public class Projectile : MonoBehaviour
 
     public float duration = 2;
 
-    public PlayerController player { get; set; }
+    public Player player { get; set; }
 
     private IEnumerator Start()
     {
@@ -19,7 +19,7 @@ public class Projectile : MonoBehaviour
         if (collider.gameObject == player.gameObject) return;
         if (collider.gameObject.CompareTag("Player"))
         {
-            collider.GetComponent<PlayerController>().GetHit();
+            collider.GetComponent<Player>().GetHit();
         }
         Destroy(gameObject);
     }
