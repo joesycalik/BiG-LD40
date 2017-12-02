@@ -25,10 +25,10 @@ InputManager:
     m_Name: Player1Horizontal
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: left
-    positiveButton: right
-    altNegativeButton: a
-    altPositiveButton: d
+    negativeButton: a
+    positiveButton: d
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 3
     dead: 0.001
     sensitivity: 3
@@ -46,7 +46,7 @@ InputManager:
     altNegativeButton: a
     altPositiveButton: d
     gravity: 3
-    dead: 0.05
+    dead: 0.3
     sensitivity: 3
     snap: 1
     invert: 0
@@ -57,12 +57,28 @@ InputManager:
     m_Name: Player2Horizontal
     descriptiveName: 
     descriptiveNegativeName: 
+    negativeButton: left
+    positiveButton: right
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 3
+    dead: 0.01
+    sensitivity: 3
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: Player2Horizontal
+    descriptiveName: 
+    descriptiveNegativeName: 
     negativeButton: 
     positiveButton: 
     altNegativeButton: a
     altPositiveButton: d
     gravity: 3
-    dead: 0.01
+    dead: 0.3
     sensitivity: 3
     snap: 1
     invert: 0
@@ -78,7 +94,7 @@ InputManager:
     altNegativeButton: a
     altPositiveButton: d
     gravity: 3
-    dead: 0.01
+    dead: 0.3
     sensitivity: 3
     snap: 1
     invert: 0
@@ -94,7 +110,7 @@ InputManager:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 3
-    dead: 0.01
+    dead: 0.3
     sensitivity: 3
     snap: 1
     invert: 0
@@ -227,8 +243,24 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 9
+    axis: 2
     joyNum: 1
+  - serializedVersion: 3
+    m_Name: Player2Fire1
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: right ctrl
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 3
+    dead: 0.01
+    sensitivity: 3
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 2
+    joyNum: 2
   - serializedVersion: 3
     m_Name: Player2Fire1
     descriptiveName: 
@@ -237,13 +269,13 @@ InputManager:
     positiveButton: 
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 1000
-    dead: 0.001
-    sensitivity: 1000
-    snap: 0
+    gravity: 3
+    dead: 0.01
+    sensitivity: 3
+    snap: 1
     invert: 0
     type: 2
-    axis: 9
+    axis: 2
     joyNum: 2
   - serializedVersion: 3
     m_Name: Player3Fire1
@@ -259,7 +291,7 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 9
+    axis: 2
     joyNum: 3
   - serializedVersion: 3
     m_Name: Player4Fire1
@@ -275,7 +307,7 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 9
+    axis: 2
     joyNum: 4
   - serializedVersion: 3
     m_Name: Fire2
@@ -332,7 +364,7 @@ InputManager:
     negativeButton: 
     positiveButton: joystick 1 button 0
     altNegativeButton: 
-    altPositiveButton: space
+    altPositiveButton: left alt
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -348,7 +380,7 @@ InputManager:
     negativeButton: 
     positiveButton: joystick 2 button 0
     altNegativeButton: 
-    altPositiveButton: 
+    altPositiveButton: right alt
     gravity: 1000
     dead: 0.001
     sensitivity: 1000

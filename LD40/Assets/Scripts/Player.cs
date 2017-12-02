@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
         new Keyframe(0, 1),
         new Keyframe(1, 0.8f),
         new Keyframe(5, 0.5f));
+    public float hitPauseDuration = 1;
 
     public string horizontalName { get { return "Player" + playerID + "Horizontal"; } }
     public string verticalName { get { return "Player" + playerID + "Vertical"; } }
@@ -35,6 +36,7 @@ public class Player : MonoBehaviour
     private bool jump = false;
     private bool fire = false;
     private float nextFireTime;
+    private float pauseTimeLeft = 0;
     private bool hasSetPlayerNumber = false;
 
     private void Awake()
@@ -80,6 +82,11 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (pauseTimeLeft > 0)
+        {
+            pauseTimeLeft -= Time.deltaTime;
+            if (pauseTimeLeft > 0) return;
+        }
         isGrounded = CheckGround();
         if (animator != null) animator.SetFloat("vSpeed", rb.velocity.y);
         horizontal = Input.GetAxis(horizontalName);
@@ -126,7 +133,7 @@ public class Player : MonoBehaviour
         {
             // Jump:
             isGrounded = false;
-            rb.AddForce(new Vector2(0, jumpForce));
+            rb.AddForce(new Vector2(0, jumpForce * currentSpeedMultiplier));
         }
     }
 
@@ -155,6 +162,7 @@ public class Player : MonoBehaviour
     {
         if (animator != null) animator.SetTrigger("Hit");
         LoseGem();
+        pauseTimeLeft = hitPauseDuration;
     }
 
     public void GainGem(Gem gem)
@@ -176,7 +184,7 @@ public class Player : MonoBehaviour
 
     private void UpdateSpeedMultiplier()
     {
-        currentSpeedMultiplier = (gems.Count == 0) ? 1 : gemSpeedCurve.Evaluate(gems.Count); ;
+        currentSpeedMultiplier = (gems.Count == 0) ? 1 : gemSpeedCurve.Evaluate(gems.Count);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
