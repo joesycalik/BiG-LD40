@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour
 {
@@ -6,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public int player;
     public Transform feet;
     public Transform shootPoint;
+    public Transform gemPoint;
     public bool facingRight = true;
     public float speedMultiplier = 1f;
     public float maxRunSpeed = 10f;
@@ -14,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public Projectile projectilePrefab;
     public float projectileForce = 100f;
     public float fireRate = 2;
+    public List<Gem> gems = new List<Gem>();
 
     public string horizontalName { get { return "Player" + player + "Horizontal"; } }
     public string verticalName { get { return "Player" + player + "Vertical"; } }
@@ -101,11 +104,29 @@ public class PlayerController : MonoBehaviour
         {
             if (animator != null) animator.SetTrigger("Fire");
             var projectile = Instantiate<Projectile>(projectilePrefab, shootPoint);
-            projectile.player = gameObject;
+            projectile.player = this;
             var force = projectileForce * new Vector3(facingRight ? 1 : -1, 0, 0);
             projectile.GetComponent<Rigidbody2D>().AddForce(force);
             nextFireTime = Time.time + fireRate;
         }
+    }
+
+    public void GainGem(Gem gem)
+    {
+        gems.Add(gem);
+        gem.transform.SetParent(gemPoint);
+        gem.transform.localPosition = new Vector3(Random.Range(-0.2f, 0.2f), Random.Range(0, 0.1f), 0);
+        //gem.Hold();
+
+    }
+
+    public void LoseGem()
+    {
+        if (gems.Count == 0) return;
+        var gem = gems[0];
+        gems.RemoveAt(0);
+        gem.isHeld = false;
+        //gem
     }
 
 }

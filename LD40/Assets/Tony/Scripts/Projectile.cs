@@ -6,7 +6,7 @@ public class Projectile : MonoBehaviour
 
     public float duration = 2;
 
-    public GameObject player { get; set; }
+    public PlayerController player { get; set; }
 
     private IEnumerator Start()
     {
@@ -16,7 +16,7 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject != player)
+        if (collider.gameObject != player.gameObject)
         {
             Debug.Log("BOOM");
             Destroy(gameObject);
