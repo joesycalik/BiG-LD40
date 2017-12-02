@@ -178,7 +178,7 @@ public class Player : MonoBehaviour
         gems.Add(gem);
         gem.HoldBy(gemPoint);
         UpdateSpeedMultiplier();
-        levelUI.GemCounts[playerID].text = gems.Count.ToString();
+        levelUI.GemCounts[playerID - 1].text = gems.Count.ToString();
     }
 
     public void LoseGem()
@@ -188,7 +188,7 @@ public class Player : MonoBehaviour
         gems.RemoveAt(0);
         gem.Release();
         UpdateSpeedMultiplier();
-        levelUI.GemCounts[playerID].text = gems.Count.ToString();
+        levelUI.GemCounts[playerID - 1].text = gems.Count.ToString();
     }
 
     private void UpdateSpeedMultiplier()
