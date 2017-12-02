@@ -1,48 +1,57 @@
-﻿//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
+﻿using UnityEngine;
 
-//public class GameSoundManager : MonoBehaviour {
+public class GameSoundManager : MonoBehaviour
+{
 
-//    private static GameSoundManager m_instance = null;
-//    public static GameSoundManager instance
-//    {
-//        get
-//        {
-//            if (m_instance == null)
-//            {
-//                m_instance = Resources.Load<GameSoundManager>("GameSoundManager");
-//            }
-//            return m_instance;
-//        }
-//    }
+    public AudioSource audioSource;
+    public AudioClip jumpSound;
+    public AudioClip fireSound;
+    public AudioClip hitSound;
+    public AudioClip getGemSound;
+    public AudioClip loseGemSound;
 
-//    private AudioSource m_audioSource = null;
-//    public AudioSource audioSource
-//    {
-//        get
-//        {
-//            if (m_audioSource == null)
-//            {
-//                m_audioSource = gameObject.AddComponent<AudioSource>();
-//                m_audioSource.pan
-//            }
-//            return m_audioSource;
-//        }
-//    }
+    private static GameSoundManager m_instance = null;
+    public static GameSoundManager instance
+    {
+        get
+        {
+            if (m_instance == null)
+            {
+                m_instance = Instantiate(Resources.Load<GameSoundManager>("GameSoundManager"));
+            }
+            return m_instance;
+        }
+    }
 
-//    public void PlayJump()
-//    {
-//        if
-//    }
+    public void Awake()
+    {
+        m_instance = this;
+    }
 
-//    public void PlayGetGem()
-//    {
+    public void PlayJump()
+    {
+        audioSource.PlayOneShot(jumpSound);
+    }
 
-//    }
+    public void PlayFire()
+    {
+        audioSource.PlayOneShot(fireSound);
 
-//    public void PlayHit()
-//    {
+    }
 
-//    }
-//}
+    public void PlayHit()
+    {
+        audioSource.PlayOneShot(hitSound);
+    }
+
+    public void PlayGetGem()
+    {
+        audioSource.PlayOneShot(getGemSound);
+    }
+
+    public void PlayLoseGem()
+    {
+
+    }
+
+}
