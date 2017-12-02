@@ -34,12 +34,14 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private bool jump = false;
+    private int jumpsLeft = 1;
     private bool fire = false;
     private float nextFireTime;
     private float pauseTimeLeft = 0;
     private bool hasSetPlayerNumber = false;
     private LevelUI levelUI;
 
+    
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -89,7 +91,9 @@ public class Player : MonoBehaviour
             pauseTimeLeft -= Time.deltaTime;
             if (pauseTimeLeft > 0) return;
         }
+        var wasGrounded = isGrounded;
         isGrounded = CheckGround();
+        if (isGrounded && !wasGrounded) jumpsLeft = 1;
         if (animator != null) animator.SetFloat("vSpeed", rb.velocity.y);
         horizontal = Input.GetAxis(horizontalName);
         Move(horizontal, jump);
@@ -131,11 +135,12 @@ public class Player : MonoBehaviour
                 FlipSprite(); // Changed direction.
             }
         }
-        if (isGrounded && jump)
+        if (jump && (isGrounded || jumpsLeft > 0))
         {
             // Jump:
             isGrounded = false;
             rb.AddForce(new Vector2(0, jumpForce * currentSpeedMultiplier));
+            jumpsLeft--;
         }
     }
 
@@ -197,6 +202,13 @@ public class Player : MonoBehaviour
         {
             GainGem(collision.gameObject.GetComponent<Gem>());
         }
+    }
+
+    public void Respawn()
+    {
+        var spawnpoint = GameObject.FindGameObjectWithTag("Spawnpoint");
+        if (spawnpoint == null) Debug.LogError("Can't find an GameObject tagged SpawnPoint", this);
+        rb.MovePosition(new Vector2(spawnpoint.transform.position.x, spawnpoint.transform.position.y));
     }
 
 }
