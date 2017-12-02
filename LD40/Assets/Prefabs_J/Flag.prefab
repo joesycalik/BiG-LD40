@@ -22,8 +22,9 @@ GameObject:
   - component: {fileID: 212300671701895782}
   - component: {fileID: 61648031039715474}
   - component: {fileID: 50441389803722946}
+  - component: {fileID: 114625898986628880}
   m_Layer: 0
-  m_Name: CratePink
+  m_Name: Flag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,6 +88,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2326965, y: 1.2320957}
   m_EdgeRadius: 0
+--- !u!114 &114625898986628880
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1558868204155708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4132ec46836c1fb488de7a8de61a6603, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212300671701895782
 SpriteRenderer:
   m_ObjectHideFlags: 1

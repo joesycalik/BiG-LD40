@@ -108,4 +108,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Flag")){
+            other.gameObject.SetActive(false);
+        }
+    }
+
 }
