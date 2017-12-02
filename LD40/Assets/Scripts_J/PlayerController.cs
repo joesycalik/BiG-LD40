@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public Transform shootPoint;
     public Transform gemPoint;
     public bool facingRight = true;
-    public float speedMultiplier = 1f;
+    public float currentSpeedMultiplier = 1f;
     public float maxRunSpeed = 10f;
     public float jumpForce = 400f;
     public LayerMask groundLayer = 1;
@@ -17,6 +17,10 @@ public class PlayerController : MonoBehaviour
     public float projectileForce = 100f;
     public float fireRate = 2;
     public List<Gem> gems = new List<Gem>();
+    public AnimationCurve gemSpeedCurve = new AnimationCurve(
+        new Keyframe(0, 1),
+        new Keyframe(1, 0.8f),
+        new Keyframe(5, 0.5f));
 
     public string horizontalName { get { return "Player" + player + "Horizontal"; } }
     public string verticalName { get { return "Player" + player + "Vertical"; } }
@@ -71,16 +75,20 @@ public class PlayerController : MonoBehaviour
 
     public void Move(float moveSpeed, bool jump)
     {
-        if (isGrounded)
+        if (isGrounded || Mathf.Abs(moveSpeed) >= 0.1f)
         {
             // Move:
-            moveSpeed *= speedMultiplier;
-            if (animator != null) animator.SetFloat("hSpeed", Mathf.Abs(moveSpeed));
+            moveSpeed *= currentSpeedMultiplier;
+            if (animator != null) animator.SetFloat("Speed", Mathf.Abs(moveSpeed));
             rb.velocity = new Vector2(moveSpeed * maxRunSpeed, rb.velocity.y);
             if ((moveSpeed > 0 && !facingRight) || (moveSpeed < 0 && facingRight))
             {
                 FlipSprite(); // Changed direction.
             }
+        }
+        else
+        {
+            rb.velocity = new Vector2(0, rb.velocity.y);
         }
         if (isGrounded && jump)
         {
@@ -100,7 +108,7 @@ public class PlayerController : MonoBehaviour
 
     private void Fire()
     {
-        if (Time.time >= nextFireTime)
+        if (Time.time >= nextFireTime) // && gems.Count > 0)
         {
             if (animator != null) animator.SetTrigger("Fire");
             var projectile = Instantiate<Projectile>(projectilePrefab, shootPoint);
@@ -111,13 +119,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void GetHit()
+    {
+        if (animator != null) animator.SetTrigger("Hit");
+        LoseGem();
+    }
+
     public void GainGem(Gem gem)
     {
+        if (gem == null || !gem.isAvailable) return;
         gems.Add(gem);
-        gem.transform.SetParent(gemPoint);
-        gem.transform.localPosition = new Vector3(Random.Range(-0.2f, 0.2f), Random.Range(0, 0.1f), 0);
-        //gem.Hold();
-
+        gem.HoldBy(gemPoint);
+        UpdateSpeedMultiplier();
     }
 
     public void LoseGem()
@@ -125,14 +138,20 @@ public class PlayerController : MonoBehaviour
         if (gems.Count == 0) return;
         var gem = gems[0];
         gems.RemoveAt(0);
-        gem.isHeld = false;
-        //gem
+        gem.Release();
+        UpdateSpeedMultiplier();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void UpdateSpeedMultiplier()
     {
-        if (other.gameObject.CompareTag("Gem")){
-            other.gameObject.SetActive(false);
+        currentSpeedMultiplier = (gems.Count == 0) ? 1 : gemSpeedCurve.Evaluate(gems.Count); ;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Gem"))
+        {
+            GainGem(collision.gameObject.GetComponent<Gem>());
         }
     }
 

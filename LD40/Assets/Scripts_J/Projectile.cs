@@ -16,10 +16,11 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject != player.gameObject)
+        if (collider.gameObject == player.gameObject) return;
+        if (collider.gameObject.CompareTag("Player"))
         {
-            Debug.Log("BOOM");
-            Destroy(gameObject);
+            collider.GetComponent<PlayerController>().GetHit();
         }
+        Destroy(gameObject);
     }
 }
