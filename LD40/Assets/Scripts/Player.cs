@@ -134,6 +134,7 @@ public class Player : MonoBehaviour
             // Jump:
             isGrounded = false;
             rb.AddForce(new Vector2(0, jumpForce * currentSpeedMultiplier));
+            GameSoundManager.instance.PlayJump();
         }
     }
 
@@ -149,6 +150,7 @@ public class Player : MonoBehaviour
     {
         if (Time.time >= nextFireTime) // && gems.Count > 0)
         {
+            GameSoundManager.instance.PlayFire();
             if (animator != null) animator.SetTrigger("Fire");
             var projectile = Instantiate<Projectile>(projectilePrefab, shootPoint.transform.position, shootPoint.transform.rotation);
             projectile.player = this;
@@ -160,6 +162,7 @@ public class Player : MonoBehaviour
 
     public void GetHit()
     {
+        GameSoundManager.instance.PlayHit();
         if (animator != null) animator.SetTrigger("Hit");
         LoseGem();
         pauseTimeLeft = hitPauseDuration;
@@ -168,6 +171,7 @@ public class Player : MonoBehaviour
     public void GainGem(Gem gem)
     {
         if (gem == null || !gem.isAvailable) return;
+        GameSoundManager.instance.PlayGetGem();
         gems.Add(gem);
         gem.HoldBy(gemPoint);
         UpdateSpeedMultiplier();
@@ -176,6 +180,7 @@ public class Player : MonoBehaviour
     public void LoseGem()
     {
         if (gems.Count == 0) return;
+        GameSoundManager.instance.PlayLoseGem();
         var gem = gems[0];
         gems.RemoveAt(0);
         gem.Release();
