@@ -131,7 +131,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Flag")){
+        if (other.gameObject.CompareTag("Gem")){
             other.gameObject.SetActive(false);
         }
     }
