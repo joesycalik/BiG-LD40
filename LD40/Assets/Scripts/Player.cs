@@ -4,7 +4,8 @@ using System.Collections.Generic;
 public class Player : MonoBehaviour
 {
 
-    public int player;
+    public int playerID;
+    public SpriteRenderer tintableSprite;
     public Transform feet;
     public Transform shootPoint;
     public Transform gemPoint;
@@ -22,10 +23,10 @@ public class Player : MonoBehaviour
         new Keyframe(1, 0.8f),
         new Keyframe(5, 0.5f));
 
-    public string horizontalName { get { return "Player" + player + "Horizontal"; } }
-    public string verticalName { get { return "Player" + player + "Vertical"; } }
-    public string jumpButtonName { get { return "Player" + player + "Jump"; } }
-    public string fireButtonName { get { return "Player" + player + "Fire1"; } }
+    public string horizontalName { get { return "Player" + playerID + "Horizontal"; } }
+    public string verticalName { get { return "Player" + playerID + "Vertical"; } }
+    public string jumpButtonName { get { return "Player" + playerID + "Jump"; } }
+    public string fireButtonName { get { return "Player" + playerID + "Fire1"; } }
 
     private const float GroundCheckRadius = 0.2f;
     private bool isGrounded;
@@ -34,6 +35,7 @@ public class Player : MonoBehaviour
     private bool jump = false;
     private bool fire = false;
     private float nextFireTime;
+    private bool hasSetPlayerNumber = false;
 
     private void Awake()
     {
@@ -46,18 +48,41 @@ public class Player : MonoBehaviour
         if (projectilePrefab == null) Debug.Log(name + " assign Projectile Prefab", this);
     }
 
+    private void Start()
+    {
+        if (!hasSetPlayerNumber) SetPlayer(playerID);
+    }
+
+    public void SetPlayer(int playerNumber)
+    {
+        hasSetPlayerNumber = true;
+        playerID = playerNumber;
+        if (tintableSprite != null) tintableSprite.color = GetPlayerColor(playerNumber);
+    }
+
+    private Color GetPlayerColor(int playerNumber)
+    {
+        switch (playerNumber)
+        {
+            case 1: return Color.blue;
+            case 2: return Color.red;
+            case 3: return Color.green;
+            case 4: return Color.yellow;
+            default: return Color.magenta;
+        }
+    }
+
     private void Update()
     {
         if (!jump) jump = Input.GetButtonDown(jumpButtonName);
-        if (!fire) fire = (player == 1 && Input.GetButtonDown(fireButtonName)) || (Input.GetAxis(fireButtonName) > 0);
-        //Debug.Log(Input.GetAxis(fireButtonName));
+        if (!fire) fire = (playerID == 1 && Input.GetButtonDown(fireButtonName)) || (Mathf.Abs(Input.GetAxis(fireButtonName)) > 0);
     }
 
     private void FixedUpdate()
     {
         isGrounded = CheckGround();
         if (animator != null) animator.SetFloat("vSpeed", rb.velocity.y);
-        var horizontal = Input.GetAxis(horizontalName);
+        horizontal = Input.GetAxis(horizontalName);
         Move(horizontal, jump);
         if (fire) Fire();
         jump = false;
@@ -74,22 +99,28 @@ public class Player : MonoBehaviour
         return false;
     }
 
+    //// Debug:
+    private float horizontal;
+    private float moveSpeed;
+    //private void OnGUI()
+    //{
+    //    GUILayout.Label("moveSpeed=" + moveSpeed + ", horiz=" + horizontal);
+    //}
+
     public void Move(float moveSpeed, bool jump)
     {
+        this.moveSpeed = moveSpeed;
         if (isGrounded || Mathf.Abs(moveSpeed) >= 0.1f)
         {
             // Move:
             moveSpeed *= currentSpeedMultiplier;
+            if (!isGrounded) moveSpeed *= 0.5f;
             if (animator != null) animator.SetFloat("Speed", Mathf.Abs(moveSpeed));
             rb.velocity = new Vector2(moveSpeed * maxRunSpeed, rb.velocity.y);
             if ((moveSpeed > 0 && !facingRight) || (moveSpeed < 0 && facingRight))
             {
                 FlipSprite(); // Changed direction.
             }
-        }
-        else
-        {
-            rb.velocity = new Vector2(0, rb.velocity.y);
         }
         if (isGrounded && jump)
         {
