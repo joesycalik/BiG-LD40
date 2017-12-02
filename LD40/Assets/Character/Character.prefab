@@ -106,6 +106,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!1 &1521274422605864
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4976378123172428}
+  m_Layer: 0
+  m_Name: Shoot Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1570399548615606
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,6 +132,21 @@ GameObject:
   - component: {fileID: 212401122679816316}
   m_Layer: 0
   m_Name: Head
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1596217692014966
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4536628653406052}
+  m_Layer: 0
+  m_Name: Gem Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -164,9 +194,8 @@ GameObject:
   - component: {fileID: 95877189494191778}
   - component: {fileID: 61919851258519220}
   - component: {fileID: 50925835892796782}
-  - component: {fileID: 114482159772149642}
-  - component: {fileID: 114392509412682310}
   - component: {fileID: 58970790779648616}
+  - component: {fileID: 114494035110311928}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -239,6 +268,19 @@ Transform:
   m_Father: {fileID: 4779308830341766}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4536628653406052
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1596217692014966}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4779308830341766}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4596424528194524
 Transform:
   m_ObjectHideFlags: 1
@@ -272,7 +314,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1905488677839286}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.063, y: -1.4677, z: 0.0029237}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.24639998, y: 0.24639998, z: 0.24639998}
   m_Children:
   - {fileID: 4784457919495240}
@@ -283,6 +325,8 @@ Transform:
   - {fileID: 4359221323893392}
   - {fileID: 4930490969181062}
   - {fileID: 4505595647357634}
+  - {fileID: 4976378123172428}
+  - {fileID: 4536628653406052}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -312,6 +356,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4779308830341766}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4976378123172428
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1521274422605864}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.2, y: 0.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4779308830341766}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50925835892796782
 Rigidbody2D:
@@ -390,7 +447,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114392509412682310
+--- !u!114 &114494035110311928
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -398,27 +455,49 @@ MonoBehaviour:
   m_GameObject: {fileID: 1905488677839286}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d08f91df3bd212f429df17f53ce2f364, type: 3}
+  m_Script: {fileID: 11500000, guid: 29556bd838ef99b43b55d2fd9a074246, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MaxSpeed: 10
-  m_JumpForce: 800
-  m_CrouchSpeed: 0.25
-  m_AirControl: 1
-  m_WhatIsGround:
+  player: 1
+  feet: {fileID: 4930490969181062}
+  shootPoint: {fileID: 4976378123172428}
+  gemPoint: {fileID: 4536628653406052}
+  facingRight: 1
+  currentSpeedMultiplier: 1
+  maxRunSpeed: 10
+  jumpForce: 400
+  groundLayer:
     serializedVersion: 2
-    m_Bits: 4294967295
---- !u!114 &114482159772149642
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1905488677839286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d7b34a3bb2d4e4b926e7e729d3d410, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+    m_Bits: 1
+  projectilePrefab: {fileID: 114528715580775330, guid: 7e2abae18f33e614080c23a2b26fa328,
+    type: 2}
+  projectileForce: 500
+  fireRate: 0.5
+  gems: []
+  gemSpeedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0.8
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 5
+      value: 0.5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!212 &212003725640942822
 SpriteRenderer:
   m_ObjectHideFlags: 1

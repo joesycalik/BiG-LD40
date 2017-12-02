@@ -49,7 +49,8 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         if (!jump) jump = Input.GetButtonDown(jumpButtonName);
-        if (!fire) fire = Input.GetButtonDown(fireButtonName) || (Input.GetAxis(fireButtonName) > 0);
+        if (!fire) fire = (player == 1 && Input.GetButtonDown(fireButtonName)) || (Input.GetAxis(fireButtonName) > 0);
+        //Debug.Log(Input.GetAxis(fireButtonName));
     }
 
     private void FixedUpdate()
@@ -111,7 +112,7 @@ public class PlayerController : MonoBehaviour
         if (Time.time >= nextFireTime) // && gems.Count > 0)
         {
             if (animator != null) animator.SetTrigger("Fire");
-            var projectile = Instantiate<Projectile>(projectilePrefab, shootPoint);
+            var projectile = Instantiate<Projectile>(projectilePrefab, shootPoint.transform.position, shootPoint.transform.rotation);
             projectile.player = this;
             var force = projectileForce * new Vector3(facingRight ? 1 : -1, 0, 0);
             projectile.GetComponent<Rigidbody2D>().AddForce(force);
