@@ -121,7 +121,7 @@ public class Player : MonoBehaviour
         var colliders = Physics2D.OverlapCircleAll(feet.position, GroundCheckRadius, groundLayer);
         for (int i = 0; i < colliders.Length; i++)
         {
-            if (colliders[i].gameObject != gameObject) return true;
+            if (colliders[i].gameObject != gameObject && !colliders[i].isTrigger) return true;
         }
         return false;
     }

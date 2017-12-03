@@ -49,7 +49,8 @@ public class GameSoundManager : MonoBehaviour
 
     public void PlayJump()
     {
-        Play(jumpSound);
+        //Play(jumpSound);
+        if (jumpSound != null) audioSource.PlayOneShot(jumpSound, 0.5f);
     }
 
     public void PlayJumpLand()
