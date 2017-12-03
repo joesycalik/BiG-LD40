@@ -37,7 +37,7 @@ public class PlayerManager : MonoBehaviour
         {
             for (int j = 0; j < gameResults.Length - 1; j++)
             {
-                if (gameResults[j].gemCount > gameResults[j + 1].gemCount)
+                if (gameResults[j].gemCount < gameResults[j + 1].gemCount)
                 {
                     temp = gameResults[j + 1];
                     gameResults[j + 1] = gameResults[j];
