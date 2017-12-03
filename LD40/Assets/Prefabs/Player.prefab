@@ -521,7 +521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerID: 0
-  tintableSprite: {fileID: 0}
+  tintableSprite: {fileID: 212745481342214710}
   feet: {fileID: 4441173471510698}
   shootPoint: {fileID: 4525256838714490}
   gemPoint: {fileID: 4496533201411002}
