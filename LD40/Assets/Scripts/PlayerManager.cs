@@ -27,23 +27,6 @@ public class PlayerManager : MonoBehaviour {
     {
         manager.gameResults[0] = players[1].playerID;
         manager.gameResults[1] = players[0].playerID;
-        /*
-        for (int i = 0; i < manager.playerCount - 1; i++)
-        {
-            int j = i + 1;
-
-            while (j > 0)
-            {
-                if (players[manager.gameResults[j - 1]].gems.Count > players[j].gems.Count)
-                {
-                    int temp = manager.gameResults[j - 1];
-                    manager.gameResults[j - 1] = players[j].playerID;
-                    manager.gameResults[j] = temp;
-
-                }
-                j--;
-            }
-        }
-        */
+        
     }
 }
