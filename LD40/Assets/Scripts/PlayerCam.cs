@@ -56,7 +56,10 @@ namespace Assets.Scripts.Player
 
         void LateUpdate()
         {
-            transform.position = Vector3.MoveTowards(transform.position, DesiredPos, camSpeed);
+            if ((transform.position - DesiredPos).magnitude > 1)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, DesiredPos, camSpeed);
+            }
             cam.orthographicSize = distance * -1 / 2;
         }
     }
