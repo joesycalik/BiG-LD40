@@ -28,7 +28,9 @@ public class PlayerManager : MonoBehaviour
 
         for (int i = 0; i < GameManager.instance.playerCount; i++)
         {
-            gameResults[i] = new Results(players[i].playerID, players[i].gems.Count);
+            gameResults[i] = new Results(players[i].playerID, players[i].gems.Count, 
+                players[i].gemsCollected, players[i].hitsLanded, players[i].hitsTaken,
+                players[i].deaths);
         }
 
         Results temp = null;
@@ -51,10 +53,15 @@ public class PlayerManager : MonoBehaviour
 
 public class Results{
     public int playerID, gemCount;
+    public int gemsCollected, hitsLanded, hitsTaken, deaths;
 
-    public Results(int ID, int count)
+    public Results(int ID, int count, int gemsCollected, int hitsLanded, int hitsTaken, int deaths)
     {
-        playerID = ID;
-        gemCount = count;
+        this.playerID = ID;
+        this.gemCount = count;
+        this.gemsCollected = gemsCollected;
+        this.hitsLanded = hitsLanded;
+        this.hitsTaken = hitsTaken;
+        this.deaths = deaths;
     }
 }

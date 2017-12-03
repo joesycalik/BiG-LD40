@@ -21,6 +21,7 @@ public class Projectile : MonoBehaviour
         if (monster != null && collider.gameObject == monster.gameObject) return;
         if (collider.gameObject.CompareTag("Player"))
         {
+            if (player != null) player.hitsLanded++;
             collider.GetComponent<Player>().GetHit();
         }
         Destroy(gameObject);

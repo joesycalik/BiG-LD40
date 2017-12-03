@@ -26,6 +26,14 @@ public class Player : MonoBehaviour
         new Keyframe(5, 0.5f));
     public float hitPauseDuration = 1;
     public float invulnerableDuration = 2;
+    [HideInInspector]
+    public int gemsCollected;
+    [HideInInspector]
+    public int hitsLanded;
+    [HideInInspector]
+    public int hitsTaken;
+    [HideInInspector]
+    public int deaths;
 
     public string horizontalName { get { return "Player" + playerID + "Horizontal"; } }
     public string verticalName { get { return "Player" + playerID + "Vertical"; } }
@@ -47,7 +55,7 @@ public class Player : MonoBehaviour
     private float invulnerableTimeLeft = 0;
     private bool isInvulnerable { get { return invulnerableTimeLeft > 0; } }
     private AudioSource runAudioSource;
-    
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -59,7 +67,7 @@ public class Player : MonoBehaviour
         if (feet == null) Debug.Log(name + " assign Feet", this);
         if (shootPoint == null) Debug.Log(name + " assign Feet", this);
         if (projectilePrefab == null) Debug.Log(name + " assign Projectile Prefab", this);
-        
+
     }
 
     private void Start()
@@ -75,7 +83,7 @@ public class Player : MonoBehaviour
         if (tintableSprite != null) tintableSprite.color = GetPlayerColor(playerNumber);
     }
 
-    private Color GetPlayerColor(int playerNumber)
+    public static Color GetPlayerColor(int playerNumber)
     {
         switch (playerNumber)
         {
@@ -180,6 +188,7 @@ public class Player : MonoBehaviour
     public void GetHit()
     {
         if (isInvulnerable) return;
+        hitsTaken++;
         if (gems.Count == 0) GameSoundManager.instance.PlayHit();
         if (animator != null) animator.SetTrigger("Hit");
         LoseGem();
@@ -190,6 +199,7 @@ public class Player : MonoBehaviour
     public void GainGem(Gem gem)
     {
         if (gem == null || !gem.isAvailable) return;
+        gemsCollected++;
         GameSoundManager.instance.PlayGetGem();
         gems.Add(gem);
         gem.HoldBy(gemPoint);
@@ -200,7 +210,7 @@ public class Player : MonoBehaviour
             gem.gemSpawn.occupied = false;
             gem.gemSpawn = null;
         }
-        
+
         UpdateSpeedMultiplier();
         UpdateBagSize();
         levelManager.GemCounts[playerID - 1].text = gems.Count.ToString();
@@ -243,7 +253,7 @@ public class Player : MonoBehaviour
 
     public void Respawn()
     {
-
+        deaths++;
         if (levelManager.SinglePlayerMode)
         {
             levelManager.ResetGems();
@@ -251,7 +261,7 @@ public class Player : MonoBehaviour
 
         foreach (var gem in gems)
         {
-            
+
             gem.transform.SetParent(null);
             Destroy(gem.gameObject);
         }
@@ -259,7 +269,7 @@ public class Player : MonoBehaviour
         GameSoundManager.instance.PlayRespawn();
         var spawnpoint = GameObject.FindGameObjectWithTag("Spawnpoint");
         if (spawnpoint == null) Debug.LogError("Can't find an GameObject tagged SpawnPoint", this);
-      
+
         transform.position = new Vector3(spawnpoint.transform.position.x, spawnpoint.transform.position.y, spawnpoint.transform.position.z);
         invulnerableTimeLeft = invulnerableDuration;
         UpdateSpeedMultiplier();
