@@ -11,9 +11,10 @@ public class MainMenu : MonoBehaviour {
     public Text playerCountText;
 
 
-    private void Start()
+    void Start()
     {
         manager = (GameManager)FindObjectOfType(typeof(GameManager));
+        manager.playerCount = 2;
     }
 
     public void LoadOnClick(int level)
