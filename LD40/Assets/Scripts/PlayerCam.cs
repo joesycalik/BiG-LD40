@@ -11,6 +11,8 @@ namespace Assets.Scripts.Player
         public List<Transform> Players;
         public float camSpeed;
         private Camera cam;
+
+        public float distance = 0f;
         void Awake()
         {
             transform = GetComponent<Transform>();
@@ -32,7 +34,7 @@ namespace Assets.Scripts.Player
             if (Players.Count <= 0)//early out if no players have been found
                 return;
             DesiredPos = Vector3.zero;
-            float distance = 0f;
+            //float distance = 0f;
             var hSort = Players.OrderByDescending(p => p.position.y);
             var wSort = Players.OrderByDescending(p => p.position.x);
             var mHeight = hSort.First().position.y - hSort.Last().position.y;
@@ -53,6 +55,7 @@ namespace Assets.Scripts.Player
         void LateUpdate()
         {
             transform.position = Vector3.MoveTowards(transform.position, DesiredPos, camSpeed);
+            cam.orthographicSize = distance * -1 / 2;
         }
     }
 }
