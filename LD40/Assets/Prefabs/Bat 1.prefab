@@ -237,7 +237,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 114528715580775330, guid: 7e2abae18f33e614080c23a2b26fa328,
     type: 2}
   projectileForce: 400
-  fireRate: 1
+  fireRate: 0.5
   direction: 1
 --- !u!212 &212134989953157072
 SpriteRenderer:
