@@ -40,17 +40,20 @@ public class Player : MonoBehaviour
     private float pauseTimeLeft = 0;
     private bool hasSetPlayerNumber = false;
     private LevelUI levelUI;
+    private ParticleSystem particleSystem;
 
     
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        particleSystem = GetComponentInChildren<ParticleSystem>();
         if (rb == null) Debug.Log(name + " missing Rigidbody2D", this);
         if (animator == null) Debug.Log(name + " missing Animator", this);
         if (feet == null) Debug.Log(name + " assign Feet", this);
         if (shootPoint == null) Debug.Log(name + " assign Feet", this);
         if (projectilePrefab == null) Debug.Log(name + " assign Projectile Prefab", this);
+        
     }
 
     private void Start()
@@ -156,6 +159,7 @@ public class Player : MonoBehaviour
     {
         if (Time.time >= nextFireTime) // && gems.Count > 0)
         {
+            particleSystem.Play();
             if (animator != null) animator.SetTrigger("Fire");
             var projectile = Instantiate<Projectile>(projectilePrefab, shootPoint.transform.position, shootPoint.transform.rotation);
             projectile.player = this;
