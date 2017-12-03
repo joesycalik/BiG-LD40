@@ -28,7 +28,7 @@ public class PlayerManager : MonoBehaviour
         
         for (int i = 0; i < GameManager.instance.playerCount; i++)
         {
-            for (int j = 0; j <= i; j++)
+            for (int j = 0; j < i; j++)
             {
                 if (gameResults[j, 0] == 0)
                 {

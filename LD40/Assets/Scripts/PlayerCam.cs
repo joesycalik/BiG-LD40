@@ -13,6 +13,7 @@ namespace Assets.Scripts.Player
         public float camSpeed;
         private Camera cam;
 
+
         private float distance = -10f;
         void Awake()
         {
@@ -43,7 +44,9 @@ namespace Assets.Scripts.Player
             var mWidth = wSort.First().position.x - wSort.Last().position.x;
             var distanceH = -(mHeight + 5f) * 0.5f / Mathf.Tan(cam.fieldOfView * 0.5f * Mathf.Deg2Rad);
             var distanceW = -(mWidth / cam.aspect + 5f) * 0.5f / Mathf.Tan(cam.fieldOfView * 0.5f * Mathf.Deg2Rad);
+
             distance = distanceH < distanceW ? distanceH : distanceW;
+            //distance = Mathf.Sqrt(distanceH * distanceH + distanceW * distanceW);
 
             for (int i = 0; i < Players.Count; i++)
             {
@@ -56,11 +59,12 @@ namespace Assets.Scripts.Player
 
         void LateUpdate()
         {
-            if ((transform.position - DesiredPos).magnitude > 1)
+            if ((transform.position - DesiredPos).magnitude > .01)
             {
                 transform.position = Vector3.MoveTowards(transform.position, DesiredPos, camSpeed);
             }
-            cam.orthographicSize = distance * -1 / 2;
+                
+                cam.orthographicSize = (distance * -1.5f)  / 2;
         }
     }
 }
