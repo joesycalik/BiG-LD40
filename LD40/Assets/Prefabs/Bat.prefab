@@ -190,6 +190,7 @@ MonoBehaviour:
     type: 2}
   projectileForce: 400
   fireRate: 0.5
+  monsterMoveDistance: 0
   direction: 1
 --- !u!212 &212794530990636136
 SpriteRenderer:

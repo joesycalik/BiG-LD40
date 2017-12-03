@@ -14,6 +14,7 @@ public class Monster : MonoBehaviour
     public Projectile projectilePrefab;
     public float projectileForce = 100f;
     public float fireRate = 0.5f;
+    public float monsterMoveDistance = 5f;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -38,6 +39,10 @@ public class Monster : MonoBehaviour
     {
         if (targets.Count == 0)
         {
+            if (Mathf.Abs(transform.position.y - originalPosition.y) > monsterMoveDistance)
+            {
+                direction *= -1;
+            }
             rb.MovePosition(new Vector2(transform.position.x, transform.position.y + Time.deltaTime * direction * verticalSpeed));
         }
     }
