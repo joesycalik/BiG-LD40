@@ -7,18 +7,12 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour
 {
 
-    GameManager manager;
     public Text[] GemCounts;
-    public static float timeLeft = 5;
+    public float timeLeft = 5;
     public Text timerText;
     public PlayerManager playerManager;
     public GemSpawn[] gemSpawns;
     public bool gemWinConReached;
-
-    private void Start()
-    {
-        manager = (GameManager)FindObjectOfType(typeof(GameManager));
-    }
 
     private void Update()
     {

@@ -6,15 +6,12 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour {
 
-    GameManager manager;
-
     public Text playerCountText;
 
 
     void Start()
     {
-        manager = (GameManager)FindObjectOfType(typeof(GameManager));
-        manager.playerCount = 2;
+        GameManager.instance.playerCount = 2;
     }
 
     public void LoadOnClick(int level)
@@ -24,7 +21,7 @@ public class MainMenu : MonoBehaviour {
 
     public void SetPlayerCount(float val)
     {
-        manager.playerCount = (int) val;
+        GameManager.instance.playerCount = (int) val;
         playerCountText.text = "Player Count: " + val;
     }
 }
