@@ -59,6 +59,7 @@ public class Monster : MonoBehaviour
         {
             // Target the player:
             targets.Add(player);
+            Fire();
         }
         else if (collision.GetComponent<Killzone>() != null)
         {
