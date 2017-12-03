@@ -46,11 +46,13 @@ public class Player : MonoBehaviour
     private LevelManager levelManager;
     private float invulnerableTimeLeft = 0;
     private bool isInvulnerable { get { return invulnerableTimeLeft > 0; } }
+    private AudioSource runAudioSource;
     
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        runAudioSource = GetComponent<AudioSource>();
         fireParticleSystem = GetComponentInChildren<ParticleSystem>();
         if (rb == null) Debug.Log(name + " missing Rigidbody2D", this);
         if (animator == null) Debug.Log(name + " missing Animator", this);
@@ -101,7 +103,11 @@ public class Player : MonoBehaviour
         }
         var wasGrounded = isGrounded;
         isGrounded = CheckGround();
-        if (isGrounded && !wasGrounded) jumpsLeft = 2;
+        if (isGrounded && !wasGrounded)
+        {
+            jumpsLeft = 2;
+            GameSoundManager.instance.PlayJumpLand();
+        }
         if (animator != null) animator.SetFloat("vSpeed", rb.velocity.y);
         var horizontal = Input.GetAxis(horizontalName);
         Move(horizontal, jump);
@@ -122,6 +128,7 @@ public class Player : MonoBehaviour
 
     public void Move(float moveSpeed, bool jump)
     {
+        runAudioSource.enabled = isGrounded && Mathf.Abs(moveSpeed) > 0.1f;
         if (isGrounded || Mathf.Abs(moveSpeed) >= 0.1f)
         {
             // Move:
