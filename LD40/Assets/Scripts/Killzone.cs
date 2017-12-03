@@ -12,7 +12,7 @@ public class Killzone : MonoBehaviour {
         }
         else if (other.CompareTag("Gem"))
         {
-            other.GetComponent<Gem>().Respawn();
+            Destroy(other.GetComponent<Gem>().gameObject);
         }
     }
 }

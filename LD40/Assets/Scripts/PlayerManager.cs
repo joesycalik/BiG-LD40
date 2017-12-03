@@ -23,8 +23,26 @@ public class PlayerManager : MonoBehaviour {
         }
     }
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	public void calculateResults()
+    {
+        manager.gameResults[0] = players[1].playerID;
+        /*
+        for (int i = 0; i < manager.playerCount - 1; i++)
+        {
+            int j = i + 1;
+
+            while (j > 0)
+            {
+                if (players[manager.gameResults[j - 1]].gems.Count > players[j].gems.Count)
+                {
+                    int temp = manager.gameResults[j - 1];
+                    manager.gameResults[j - 1] = players[j].playerID;
+                    manager.gameResults[j] = temp;
+
+                }
+                j--;
+            }
+        }
+        */
+    }
 }

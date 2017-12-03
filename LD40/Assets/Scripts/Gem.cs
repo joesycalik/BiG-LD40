@@ -4,12 +4,14 @@ public class Gem : MonoBehaviour
 {
 
     public bool isAvailable = true;
+    public GemSpawn gemSpawn;
 
     private Vector3 originalPosition;
+    private Transform originalParent;
 
     private void Start()
     {
-        originalPosition = transform.position;
+        
     }
 
     public void HoldBy(Transform holder)
@@ -40,10 +42,5 @@ public class Gem : MonoBehaviour
         var rb = GetComponent<Rigidbody2D>();
         rb.bodyType = RigidbodyType2D.Static;
         isAvailable = true;
-    }
-
-    public void Respawn()
-    {
-        transform.position = originalPosition;
     }
 }

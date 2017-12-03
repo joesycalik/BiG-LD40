@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
     private float nextFireTime;
     private float pauseTimeLeft = 0;
     private bool hasSetPlayerNumber = false;
-    private LevelUI levelUI;
+    private LevelManager levelManager;
 
     
     private void Awake()
@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        levelUI = FindObjectOfType<LevelUI>();
+        levelManager = FindObjectOfType<LevelManager>();
         if (!hasSetPlayerNumber) SetPlayer(playerID);
     }
 
@@ -172,8 +172,15 @@ public class Player : MonoBehaviour
         GameSoundManager.instance.PlayGetGem();
         gems.Add(gem);
         gem.HoldBy(gemPoint);
+
+        if (gem.gemSpawn.occupied == true)
+        {
+            gem.gemSpawn.occupied = false;
+            gem.gemSpawn = null;
+        }
+        
         UpdateSpeedMultiplier();
-        levelUI.GemCounts[playerID - 1].text = gems.Count.ToString();
+        levelManager.GemCounts[playerID - 1].text = gems.Count.ToString();
     }
 
     public void LoseGem()
@@ -184,7 +191,7 @@ public class Player : MonoBehaviour
         gems.RemoveAt(0);
         gem.Release();
         UpdateSpeedMultiplier();
-        levelUI.GemCounts[playerID - 1].text = gems.Count.ToString();
+        levelManager.GemCounts[playerID - 1].text = gems.Count.ToString();
     }
 
     private void UpdateSpeedMultiplier()
@@ -204,8 +211,9 @@ public class Player : MonoBehaviour
     {
         foreach (var gem in gems)
         {
+            
             gem.transform.SetParent(null);
-            gem.Respawn();
+            Destroy(gem.gameObject);
         }
         gems.Clear();
         GameSoundManager.instance.PlayRespawn();
