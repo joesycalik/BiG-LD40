@@ -4497,6 +4497,22 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: LoadOnClick
       objectReference: {fileID: 0}
+    - target: {fileID: 1766242571963994, guid: c6952ea84e6b12a41859cc84930f31aa, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849626227966068, guid: c6952ea84e6b12a41859cc84930f31aa, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1298411632116134, guid: c6952ea84e6b12a41859cc84930f31aa, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1414076365365160, guid: c6952ea84e6b12a41859cc84930f31aa, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c6952ea84e6b12a41859cc84930f31aa, type: 2}
   m_IsPrefabParent: 0

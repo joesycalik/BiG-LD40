@@ -1817,6 +1817,22 @@ Prefab:
       propertyPath: m_AnchoredPosition.y
       value: 194
       objectReference: {fileID: 0}
+    - target: {fileID: 1766242571963994, guid: c6952ea84e6b12a41859cc84930f31aa, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849626227966068, guid: c6952ea84e6b12a41859cc84930f31aa, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1298411632116134, guid: c6952ea84e6b12a41859cc84930f31aa, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1414076365365160, guid: c6952ea84e6b12a41859cc84930f31aa, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c6952ea84e6b12a41859cc84930f31aa, type: 2}
   m_IsPrefabParent: 0
@@ -2975,7 +2991,7 @@ MonoBehaviour:
   - {fileID: 642557025}
   - {fileID: 841156238}
   GemsLeft: {fileID: 1735233100}
-  timeLeft: 90
+  timeLeft: 10
   timerText: {fileID: 1385007848}
   playerManager: {fileID: 2050502630}
   gemSpawns:
