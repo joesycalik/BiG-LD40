@@ -5,6 +5,8 @@ public class Gem : MonoBehaviour
 
     public bool isAvailable = true;
     public GemSpawn gemSpawn;
+    public float launchDuration = 2f;
+    public float notAvailableDuration = 0.2f;
 
     private Vector3 originalPosition;
     private Transform originalParent;
@@ -34,13 +36,18 @@ public class Gem : MonoBehaviour
         rb.AddForce(new Vector3(Random.Range(-400f, 400f), 300f, 0));
         var collider = GetComponent<Collider2D>();
         collider.enabled = true;
-        Invoke("MakeAvailable", 2);
+        Invoke("StopLaunch", launchDuration);
+        Invoke("MakeAvailable", notAvailableDuration);
+    }
+
+    private void StopLaunch()
+    {
+        var rb = GetComponent<Rigidbody2D>();
+        rb.bodyType = RigidbodyType2D.Static;
     }
 
     private void MakeAvailable()
     {
-        var rb = GetComponent<Rigidbody2D>();
-        rb.bodyType = RigidbodyType2D.Static;
         isAvailable = true;
     }
 }
