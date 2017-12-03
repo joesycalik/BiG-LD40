@@ -13,6 +13,7 @@ public class LevelManager : MonoBehaviour
     public Text timerText;
     PlayerManager playerManager;
     public GemSpawn[] gemSpawns;
+    public bool gemWinConReached;
 
     private void Start()
     {
@@ -23,7 +24,7 @@ public class LevelManager : MonoBehaviour
     private void Update()
     {
         timeLeft -= Time.deltaTime;
-        if (timeLeft <= 0)
+        if (timeLeft <= 0 || gemWinConReached)
         {
             timeLeft = 0;
             //playerManager.calculateResults();

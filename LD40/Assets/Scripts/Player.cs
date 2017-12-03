@@ -193,6 +193,10 @@ public class Player : MonoBehaviour
         
         UpdateSpeedMultiplier();
         levelManager.GemCounts[playerID - 1].text = gems.Count.ToString();
+        if (gems.Count == 10)
+        {
+            levelManager.gemWinConReached = true;
+        }
     }
 
     public void LoseGem()
