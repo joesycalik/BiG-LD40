@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System.Collections;
 
 namespace Assets.Scripts.Player
 {
@@ -19,8 +20,9 @@ namespace Assets.Scripts.Player
             cam = GetComponent<Camera>();
         }
 
-        private void Start()
+        private IEnumerator Start()
         {
+            yield return null;
             var p = GameObject.FindGameObjectsWithTag("Player");
             Players = new List<Transform>();
             for (int i = 0; i < p.Length; i++)
