@@ -24,9 +24,26 @@ public class PlayerManager : MonoBehaviour
 
     public void calculateResults()
     {
-        int[] gameResults = new int[GameManager.instance.playerCount];
-        gameResults[0] = players[1].playerID;
-        gameResults[1] = players[0].playerID;
+        int[,] gameResults = new int[GameManager.instance.playerCount, 2];
+        
+        for (int i = 0; i < GameManager.instance.playerCount; i++)
+        {
+            for (int j = 0; j <= i; j++)
+            {
+                if (gameResults[j, 0] == 0)
+                {
+                    gameResults[j, 0] = players[i].playerID;
+                    gameResults[j, 1] = players[i].gems.Count;
+                } else if (players[i].gems.Count > gameResults[j, 1])
+                {
+                    gameResults[j + 1, 0] = gameResults[j, 0];
+                    gameResults[j + 1, 1] = gameResults[j, 1];
+
+                    gameResults[j, 0] = players[i].playerID;
+                    gameResults[j, 1] = players[i].gems.Count;
+                }
+            }
+        }
 
         GameManager.instance.gameResults = gameResults;
     }

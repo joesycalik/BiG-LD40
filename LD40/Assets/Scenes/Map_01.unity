@@ -217,12 +217,12 @@ Prefab:
     - target: {fileID: 224488264187549578, guid: c6952ea84e6b12a41859cc84930f31aa,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: -33.067627
+      value: -48.067627
       objectReference: {fileID: 0}
     - target: {fileID: 224488264187549578, guid: c6952ea84e6b12a41859cc84930f31aa,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -338.62848
+      value: -340.12848
       objectReference: {fileID: 0}
     - target: {fileID: 224488264187549578, guid: c6952ea84e6b12a41859cc84930f31aa,
         type: 2}
@@ -1977,7 +1977,7 @@ MonoBehaviour:
   - {fileID: 1204110502}
   - {fileID: 1770366599}
   - {fileID: 273112848}
-  timeLeft: 60
+  timeLeft: 5
   timerText: {fileID: 2077801547}
   playerManager: {fileID: 1566992084}
   gemSpawns:

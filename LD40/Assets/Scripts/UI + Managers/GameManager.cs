@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
         }
     }
     public int playerCount = 2;
-    public int[] gameResults;
+    public int[,] gameResults;
 
 
     void Awake()
