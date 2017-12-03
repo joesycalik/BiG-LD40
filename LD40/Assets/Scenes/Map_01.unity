@@ -912,6 +912,48 @@ Transform:
   m_PrefabParentObject: {fileID: 4521890919656924, guid: 491784c25dccc4c4880ebb5d38dd1306,
     type: 2}
   m_PrefabInternal: {fileID: 1616287208}
+--- !u!1001 &1059535732
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4283645287196460, guid: 6c312a49fd611cb42baf3b322220bab0, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -6.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 4283645287196460, guid: 6c312a49fd611cb42baf3b322220bab0, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 4283645287196460, guid: 6c312a49fd611cb42baf3b322220bab0, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4283645287196460, guid: 6c312a49fd611cb42baf3b322220bab0, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4283645287196460, guid: 6c312a49fd611cb42baf3b322220bab0, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4283645287196460, guid: 6c312a49fd611cb42baf3b322220bab0, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4283645287196460, guid: 6c312a49fd611cb42baf3b322220bab0, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4283645287196460, guid: 6c312a49fd611cb42baf3b322220bab0, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 6c312a49fd611cb42baf3b322220bab0, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1068768179
 Prefab:
   m_ObjectHideFlags: 0
@@ -1968,7 +2010,7 @@ MonoBehaviour:
   - {fileID: 1204110502}
   - {fileID: 1770366599}
   - {fileID: 273112848}
-  timeLeft: 120
+  timeLeft: 10
   timerText: {fileID: 2077801547}
   playerManager: {fileID: 1566992084}
   gemSpawns:
@@ -1980,6 +2022,8 @@ MonoBehaviour:
   - {fileID: 1419801111}
   - {fileID: 2029867042}
   - {fileID: 1423305588}
+  SinglePlayerMode: 0
+  GemsToWin: 10
   gemWinConReached: 0
 --- !u!4 &1779129304
 Transform:

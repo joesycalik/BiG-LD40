@@ -19,7 +19,7 @@ public class ResultsManager : MonoBehaviour {
     {
         for (int i = 0; i < 4; i++)
         {
-            var isPlayerValid = i >= GameManager.instance.playerCount;
+            var isPlayerValid = i < GameManager.instance.playerCount;
             resultsPanel[i].gameObject.SetActive(isPlayerValid);
             if (isPlayerValid) SetPlayerResults(i);
         }
