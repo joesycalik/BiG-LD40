@@ -12,7 +12,7 @@ namespace Assets.Scripts.Player
         public float camSpeed;
         private Camera cam;
 
-        public float distance = 0f;
+        private float distance = -10f;
         void Awake()
         {
             transform = GetComponent<Transform>();
@@ -49,7 +49,7 @@ namespace Assets.Scripts.Player
             }
             if (distance > -10f) distance = -10f;
             DesiredPos /= Players.Count;
-            DesiredPos.z = distance;
+            DesiredPos.z = transform.position.z;
         }
 
         void LateUpdate()
