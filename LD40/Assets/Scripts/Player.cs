@@ -195,7 +195,7 @@ public class Player : MonoBehaviour
         gem.HoldBy(gemPoint);
         gem.gameObject.SetActive(false);
 
-        if (gem.gemSpawn.occupied == true)
+        if (gem.gemSpawn != null && gem.gemSpawn.occupied == true)
         {
             gem.gemSpawn.occupied = false;
             gem.gemSpawn = null;

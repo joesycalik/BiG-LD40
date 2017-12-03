@@ -5,6 +5,7 @@ public class Gem : MonoBehaviour
 
     public bool isAvailable = true;
     public GemSpawn gemSpawn;
+    public float notAvailableDuration = 0.2f;
 
     private Vector3 originalPosition;
     private Transform originalParent;
@@ -34,7 +35,7 @@ public class Gem : MonoBehaviour
         rb.AddForce(new Vector3(Random.Range(-400f, 400f), 300f, 0));
         var collider = GetComponent<Collider2D>();
         collider.enabled = true;
-        Invoke("MakeAvailable", 2);
+        Invoke("MakeAvailable", notAvailableDuration);
     }
 
     private void MakeAvailable()
