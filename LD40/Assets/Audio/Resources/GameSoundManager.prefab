@@ -221,3 +221,4 @@ MonoBehaviour:
   getGemSound: {fileID: 8300000, guid: 737f3f514d2621f4d868ff0d8ed6f822, type: 3}
   loseGemSound: {fileID: 8300000, guid: 1e61d0ed4cc13d5488bb31eb1a4f4898, type: 3}
   respawnSound: {fileID: 8300000, guid: 718f46d2d80c2004082c47df9a6115f9, type: 3}
+  countdownSound: {fileID: 8300000, guid: 9620dd25be4f9684191f9f948e7d949f, type: 3}

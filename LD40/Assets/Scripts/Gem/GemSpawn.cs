@@ -7,6 +7,7 @@ public class GemSpawn : MonoBehaviour {
     public bool occupied = false;
     public Gem gemPrefab;
     public float respawnTimer;
+    LevelManager levelManager;
 
     //To do
     /// <summary>
@@ -20,11 +21,13 @@ public class GemSpawn : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         SpawnGem();
-	}
+        levelManager = FindObjectOfType<LevelManager>();
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		if (occupied == false)
+		if (occupied == false && !levelManager.SinglePlayerMode)
         {
             respawnTimer -= Time.deltaTime;
 
