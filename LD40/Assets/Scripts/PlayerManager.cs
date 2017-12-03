@@ -24,27 +24,37 @@ public class PlayerManager : MonoBehaviour
 
     public void calculateResults()
     {
-        int[,] gameResults = new int[GameManager.instance.playerCount, 2];
-        
+        Results[] gameResults = new Results[GameManager.instance.playerCount];
+
         for (int i = 0; i < GameManager.instance.playerCount; i++)
         {
-            for (int j = 0; j < i; j++)
-            {
-                if (gameResults[j, 0] == 0)
-                {
-                    gameResults[j, 0] = players[i].playerID;
-                    gameResults[j, 1] = players[i].gems.Count;
-                } else if (players[i].gems.Count > gameResults[j, 1])
-                {
-                    gameResults[j + 1, 0] = gameResults[j, 0];
-                    gameResults[j + 1, 1] = gameResults[j, 1];
+            gameResults[i] = new Results(players[i].playerID, players[i].gems.Count);
+        }
 
-                    gameResults[j, 0] = players[i].playerID;
-                    gameResults[j, 1] = players[i].gems.Count;
+        Results temp = null;
+
+        for (int i = 0; i < gameResults.Length; i++)
+        {
+            for (int j = 0; j < gameResults.Length - 1; j++)
+            {
+                if (gameResults[j].gemCount > gameResults[j + 1].gemCount)
+                {
+                    temp = gameResults[j + 1];
+                    gameResults[j + 1] = gameResults[j];
+                    gameResults[j] = temp;
                 }
             }
         }
-
         GameManager.instance.gameResults = gameResults;
+    }
+}
+
+public class Results{
+    public int playerID, gemCount;
+
+    public Results(int ID, int count)
+    {
+        playerID = ID;
+        gemCount = count;
     }
 }

@@ -20,26 +20,26 @@ public class ResultsManager : MonoBehaviour {
             switch (i)
             {
                 case 0:
-                    resultsText[i].text = "Player " + GameManager.instance.gameResults[i, 0] + 
-                        " - Gems: " + GameManager.instance.gameResults[i, 1];
+                    resultsText[i].text = "Player " + GameManager.instance.gameResults[i].playerID + 
+                        " - Gems: " + GameManager.instance.gameResults[i].gemCount;
                     resultsText[i].gameObject.SetActive(true);
                     break;
 
                 case 1:
-                    resultsText[i].text = "Player " + GameManager.instance.gameResults[i, 0] +
-                        " - Gems: " + GameManager.instance.gameResults[i, 1];
+                    resultsText[i].text = "Player " + GameManager.instance.gameResults[i].playerID +
+                        " - Gems: " + GameManager.instance.gameResults[i].gemCount;
                     resultsText[i].gameObject.SetActive(true);
                     break;
 
                 case 2:
-                    resultsText[i].text = "Player " + GameManager.instance.gameResults[i, 0] +
-                        " - Gems: " + GameManager.instance.gameResults[i, 1];
+                    resultsText[i].text = "Player " + GameManager.instance.gameResults[i].playerID +
+                        " - Gems: " + GameManager.instance.gameResults[i].gemCount;
                     resultsText[i].gameObject.SetActive(true);
                     break;
 
                 case 3:
-                    resultsText[i].text = "Player " + GameManager.instance.gameResults[i, 0] +
-                        " - Gems: " + GameManager.instance.gameResults[i, 1];
+                    resultsText[i].text = "Player " + GameManager.instance.gameResults[i].playerID +
+                        " - Gems: " + GameManager.instance.gameResults[i].gemCount;
                     resultsText[i].gameObject.SetActive(true);
                     break;
             }
