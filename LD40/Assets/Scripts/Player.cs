@@ -204,7 +204,7 @@ public class Player : MonoBehaviour
         UpdateSpeedMultiplier();
         UpdateBagSize();
         levelManager.GemCounts[playerID - 1].text = gems.Count.ToString();
-        if (gems.Count == 10)
+        if (gems.Count == levelManager.GemsToWin)
         {
             levelManager.gemWinConReached = true;
         }
