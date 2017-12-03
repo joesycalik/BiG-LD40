@@ -26,3 +26,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SinglePlayerMap1.unity
     guid: daafaa77348a23e459f0f31262cb0531
+  - enabled: 1
+    path: Assets/Scenes/SinglePlayerMap2.unity
+    guid: 99155416841a03b42809b7939f548e78
