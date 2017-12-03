@@ -811,20 +811,26 @@ MonoBehaviour:
       outSlope: 0
       tangentMode: 0
     - serializedVersion: 2
-      time: 1
-      value: 0.8
-      inSlope: 0
-      outSlope: 0
+      time: 5.0537214
+      value: 0.7070422
+      inSlope: -0.14807922
+      outSlope: -0.14807922
       tangentMode: 0
     - serializedVersion: 2
-      time: 5
-      value: 0.5
+      time: 7.779511
+      value: 0.40948743
+      inSlope: -0.07783362
+      outSlope: -0.07783362
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 15.000719
+      value: 0.099813096
       inSlope: 0
       outSlope: 0
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   hitPauseDuration: 1
   invulnerableDuration: 2
 --- !u!198 &198290307877556600
