@@ -12,6 +12,8 @@ public class LevelManager : MonoBehaviour
     public Text timerText;
     public PlayerManager playerManager;
     public GemSpawn[] gemSpawns;
+    public bool SinglePlayerMode = false;
+    public int GemsToWin = 10;
     public bool gemWinConReached;
 
     private void Update()
