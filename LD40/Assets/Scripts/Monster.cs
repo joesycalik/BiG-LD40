@@ -21,9 +21,11 @@ public class Monster : MonoBehaviour
     private Vector3 originalPosition;
     public float direction = 1;
     private HashSet<Player> targets = new HashSet<Player>();
+    public AudioSource audioSource;
 
     private IEnumerator Start()
     {
+        audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         originalPosition = transform.position;
@@ -85,6 +87,7 @@ public class Monster : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         direction = Mathf.Sign(transform.position.y - collision.transform.position.y);
+        if (collision.collider.GetComponent<Player>() != null && audioSource != null) audioSource.Play();
     }
 
 }

@@ -19,7 +19,12 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        GemsLeft.text = GemsToWin.ToString();
+        if (GemsLeft != null) GemsLeft.text = GemsToWin.ToString();
+        for (int i = 0; i < 4; i++)
+        {
+            var ui = GameObject.Find("Level UI/Panel/Player " + (i + 1));
+            if (ui != null) ui.SetActive(i < GameManager.instance.playerCount);
+        }
     }
 
     private void Update()
@@ -48,7 +53,7 @@ public class LevelManager : MonoBehaviour
 
     public void UpdateGemsLeft(int gems)
     {
-        GemsLeft.text = (GemsToWin - gems).ToString();
+        if (GemsLeft != null) GemsLeft.text = (GemsToWin - gems).ToString();
     }
 
     public void LoadOnClick(int level)
