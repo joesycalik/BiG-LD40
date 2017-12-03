@@ -103,7 +103,11 @@ public class Player : MonoBehaviour
         }
         var wasGrounded = isGrounded;
         isGrounded = CheckGround();
-        if (isGrounded && !wasGrounded) jumpsLeft = 2;
+        if (isGrounded && !wasGrounded)
+        {
+            jumpsLeft = 2;
+            GameSoundManager.instance.PlayJumpLand();
+        }
         if (animator != null) animator.SetFloat("vSpeed", rb.velocity.y);
         var horizontal = Input.GetAxis(horizontalName);
         Move(horizontal, jump);

@@ -5,6 +5,7 @@ public class GameSoundManager : MonoBehaviour
 
     public AudioSource audioSource;
     public AudioClip jumpSound;
+    public AudioClip jumpLandSound;
     public AudioClip fireSound;
     public AudioClip hitSound;
     public AudioClip getGemSound;
@@ -48,6 +49,11 @@ public class GameSoundManager : MonoBehaviour
     public void PlayJump()
     {
         Play(jumpSound);
+    }
+
+    public void PlayJumpLand()
+    {
+        Play(jumpLandSound);
     }
 
     public void PlayFire()
