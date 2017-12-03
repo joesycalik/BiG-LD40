@@ -8,6 +8,7 @@ public class LevelManager : MonoBehaviour
 {
 
     public Text[] GemCounts;
+    public Text GemsLeft;
     public float timeLeft = 5;
     public Text timerText;
     public PlayerManager playerManager;
@@ -15,6 +16,11 @@ public class LevelManager : MonoBehaviour
     public bool SinglePlayerMode = false;
     public int GemsToWin = 10;
     public bool gemWinConReached;
+
+    private void Start()
+    {
+        GemsLeft.text = GemsToWin.ToString();
+    }
 
     private void Update()
     {
@@ -33,10 +39,16 @@ public class LevelManager : MonoBehaviour
 
     public void ResetGems()
     {
+        
         foreach (GemSpawn gemSpawn in gemSpawns)
         {
             gemSpawn.SpawnGem();
         }
+    }
+
+    public void UpdateGemsLeft(int gems)
+    {
+        GemsLeft.text = (GemsToWin - gems).ToString();
     }
 
     public void LoadOnClick(int level)

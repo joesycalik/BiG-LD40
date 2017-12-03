@@ -211,6 +211,11 @@ public class Player : MonoBehaviour
             gem.gemSpawn = null;
         }
 
+        if (levelManager.SinglePlayerMode)
+        {
+            levelManager.UpdateGemsLeft(gems.Count);
+        }
+
         UpdateSpeedMultiplier();
         UpdateBagSize();
         levelManager.GemCounts[playerID - 1].text = gems.Count.ToString();
@@ -231,6 +236,10 @@ public class Player : MonoBehaviour
         UpdateSpeedMultiplier();
         UpdateBagSize();
         levelManager.GemCounts[playerID - 1].text = gems.Count.ToString();
+        if (levelManager.SinglePlayerMode)
+        {
+            levelManager.UpdateGemsLeft(gems.Count);
+        }
     }
 
     private void UpdateSpeedMultiplier()
@@ -254,10 +263,6 @@ public class Player : MonoBehaviour
     public void Respawn()
     {
         deaths++;
-        if (levelManager.SinglePlayerMode)
-        {
-            levelManager.ResetGems();
-        }
 
         foreach (var gem in gems)
         {
@@ -266,6 +271,11 @@ public class Player : MonoBehaviour
             Destroy(gem.gameObject);
         }
         gems.Clear();
+        if (levelManager.SinglePlayerMode)
+        {
+            levelManager.UpdateGemsLeft(gems.Count);
+            levelManager.ResetGems();
+        }
         GameSoundManager.instance.PlayRespawn();
         var spawnpoint = GameObject.FindGameObjectWithTag("Spawnpoint");
         if (spawnpoint == null) Debug.LogError("Can't find an GameObject tagged SpawnPoint", this);
