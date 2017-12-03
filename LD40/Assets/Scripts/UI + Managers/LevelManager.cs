@@ -18,6 +18,8 @@ public class LevelManager : MonoBehaviour
 
     private void Update()
     {
+        var hit5Seconds = (timeLeft >= 5) && (timeLeft - Time.deltaTime <= 5);
+        if (hit5Seconds) GameSoundManager.instance.PlayCountdown();
         timeLeft -= Time.deltaTime;
         if (timeLeft <= 0 || gemWinConReached)
         {
