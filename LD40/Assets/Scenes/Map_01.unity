@@ -217,12 +217,12 @@ Prefab:
     - target: {fileID: 224488264187549578, guid: c6952ea84e6b12a41859cc84930f31aa,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: -48.067627
+      value: -34.567627
       objectReference: {fileID: 0}
     - target: {fileID: 224488264187549578, guid: c6952ea84e6b12a41859cc84930f31aa,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -340.12848
+      value: -419.62848
       objectReference: {fileID: 0}
     - target: {fileID: 224488264187549578, guid: c6952ea84e6b12a41859cc84930f31aa,
         type: 2}
@@ -338,6 +338,26 @@ Prefab:
         type: 2}
       propertyPath: m_LocalPosition.y
       value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 224249748352710504, guid: c6952ea84e6b12a41859cc84930f31aa,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224249748352710504, guid: c6952ea84e6b12a41859cc84930f31aa,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 194
+      objectReference: {fileID: 0}
+    - target: {fileID: 224249748352710504, guid: c6952ea84e6b12a41859cc84930f31aa,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224249748352710504, guid: c6952ea84e6b12a41859cc84930f31aa,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 194
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c6952ea84e6b12a41859cc84930f31aa, type: 2}
@@ -1980,6 +2000,8 @@ MonoBehaviour:
   - {fileID: 1419801111}
   - {fileID: 2029867042}
   - {fileID: 1423305588}
+  SinglePlayerMode: 0
+  GemsToWin: 10
   gemWinConReached: 0
 --- !u!4 &1779129304
 Transform:
