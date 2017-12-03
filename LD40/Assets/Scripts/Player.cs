@@ -34,12 +34,12 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private bool jump = false;
-    private int jumpsLeft = 1;
+    public int jumpsLeft = 2;
     private bool fire = false;
     private float nextFireTime;
     private float pauseTimeLeft = 0;
     private bool hasSetPlayerNumber = false;
-    private ParticleSystem particleSystem;
+    private ParticleSystem fireParticleSystem;
     private LevelManager levelManager;
 
     
@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        particleSystem = GetComponentInChildren<ParticleSystem>();
+        fireParticleSystem = GetComponentInChildren<ParticleSystem>();
         if (rb == null) Debug.Log(name + " missing Rigidbody2D", this);
         if (animator == null) Debug.Log(name + " missing Animator", this);
         if (feet == null) Debug.Log(name + " assign Feet", this);
@@ -96,7 +96,7 @@ public class Player : MonoBehaviour
         }
         var wasGrounded = isGrounded;
         isGrounded = CheckGround();
-        if (isGrounded && !wasGrounded) jumpsLeft = 1;
+        if (isGrounded && !wasGrounded) jumpsLeft = 2;
         if (animator != null) animator.SetFloat("vSpeed", rb.velocity.y);
         var horizontal = Input.GetAxis(horizontalName);
         Move(horizontal, jump);
@@ -133,6 +133,7 @@ public class Player : MonoBehaviour
         {
             // Jump:
             isGrounded = false;
+            rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(new Vector2(0, jumpForce * currentSpeedMultiplier));
             GameSoundManager.instance.PlayJump();
             jumpsLeft--;
@@ -151,7 +152,8 @@ public class Player : MonoBehaviour
     {
         if (Time.time >= nextFireTime) // && gems.Count > 0) // Can still fire without gems.
         {
-            particleSystem.Play();
+            fireParticleSystem.gameObject.transform.position = shootPoint.transform.position;
+            fireParticleSystem.Play();
 
             GameSoundManager.instance.PlayFire();
             if (animator != null) animator.SetTrigger("Fire");
