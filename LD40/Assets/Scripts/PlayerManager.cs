@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    public const int MaxPlayers = 4;
+    public Player playerPrefab;
+    public GameObject[] playerSpawnpoints = new GameObject[MaxPlayers];
+    public Player[] players = new Player[MaxPlayers];
 
-    public Player[] players = new Player[4];
-
-    // Use this for initialization
     void Start()
     {
+        for (int i = 0; i < MaxPlayers; i++)
+        {
+            playerSpawnpoints[i].SetActive(false);
+        }
         for (int i = 0; i < GameManager.instance.playerCount; i++)
         {
-            players[i].gameObject.SetActive(true);
+            players[i] = Instantiate(playerPrefab, new Vector3(playerSpawnpoints[i].transform.position.x, playerSpawnpoints[i].transform.position.y, 0), playerSpawnpoints[i].transform.rotation);
+            players[i].SetPlayer(i + 1);
         }
     }
 
