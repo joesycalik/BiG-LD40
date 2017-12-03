@@ -26,6 +26,7 @@ public class PlayerManager : MonoBehaviour {
 	public void calculateResults()
     {
         manager.gameResults[0] = players[1].playerID;
+        manager.gameResults[1] = players[0].playerID;
         /*
         for (int i = 0; i < manager.playerCount - 1; i++)
         {

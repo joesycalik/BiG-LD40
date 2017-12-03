@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 58715211224704598}
   - component: {fileID: 114866310149638936}
   m_Layer: 0
-  m_Name: Gem Spawn 1
+  m_Name: Gem Spawn
   m_TagString: GemSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,3 +69,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   occupied: 0
   gem: {fileID: 114325237661523654, guid: 7cd0531672b2eb142b9ccf16e7deeb32, type: 2}
+  respawnTimer: 0
