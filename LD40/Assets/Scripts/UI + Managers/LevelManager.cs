@@ -30,6 +30,15 @@ public class LevelManager : MonoBehaviour
         timerText.text = timeLeft.ToString("f0");
     }
 
+
+    public void ResetGems()
+    {
+        foreach (GemSpawn gemSpawn in gemSpawns)
+        {
+            gemSpawn.SpawnGem();
+        }
+    }
+
     public void LoadOnClick(int level)
     {
         SceneManager.LoadScene(level);

@@ -243,6 +243,12 @@ public class Player : MonoBehaviour
 
     public void Respawn()
     {
+
+        if (levelManager.SinglePlayerMode)
+        {
+            levelManager.ResetGems();
+        }
+
         foreach (var gem in gems)
         {
             
