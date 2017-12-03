@@ -133,7 +133,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e4cd8ff5b8206e24892e9cccf878dd5b, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -215,8 +215,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 82145138307023424}
   jumpSound: {fileID: 8300000, guid: d522b9f24fa5585468b3f984804bd2df, type: 3}
+  jumpLandSound: {fileID: 8300000, guid: 0fe4d3ddb13bc214cbf8776470903f4c, type: 3}
   fireSound: {fileID: 8300000, guid: c71e0c8212d327f4c95e51ac33fd918a, type: 3}
   hitSound: {fileID: 8300000, guid: 7f4a963e5216da3488649bb84a51d691, type: 3}
   getGemSound: {fileID: 8300000, guid: 737f3f514d2621f4d868ff0d8ed6f822, type: 3}
   loseGemSound: {fileID: 8300000, guid: 1e61d0ed4cc13d5488bb31eb1a4f4898, type: 3}
-  respawnSound: {fileID: 0}
+  respawnSound: {fileID: 8300000, guid: 718f46d2d80c2004082c47df9a6115f9, type: 3}
