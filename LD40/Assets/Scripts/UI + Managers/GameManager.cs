@@ -21,18 +21,15 @@ public class GameManager : MonoBehaviour
     public int[] gameResults;
 
 
-    private void Update()
-    {
-    }
     void Awake()
     {
-        if (instance != null && instance != this)
+        if (m_instance != this && m_instance != null)
         {
             Destroy(gameObject);
             return;
         }
 
-        DontDestroyOnLoad(this);
+        DontDestroyOnLoad(this.gameObject);
     } //End Awake
 } //End class
 

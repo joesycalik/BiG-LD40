@@ -68,5 +68,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   occupied: 0
-  gem: {fileID: 114325237661523654, guid: 7cd0531672b2eb142b9ccf16e7deeb32, type: 2}
+  gemPrefab: {fileID: 114325237661523654, guid: 7cd0531672b2eb142b9ccf16e7deeb32,
+    type: 2}
   respawnTimer: 0

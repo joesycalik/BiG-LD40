@@ -5,7 +5,7 @@ using UnityEngine;
 public class GemSpawn : MonoBehaviour {
 
     public bool occupied = false;
-    public Gem gem;
+    public Gem gemPrefab;
     public float respawnTimer;
 
     //To do
@@ -40,8 +40,8 @@ public class GemSpawn : MonoBehaviour {
     {
         if (!occupied)
         {
-            Instantiate(gem, gameObject.transform.position, Quaternion.identity);
-            gem.gemSpawn = this;
+            var gemGO = Instantiate(gemPrefab, gameObject.transform.position, Quaternion.identity);
+            gemGO.GetComponent<Gem>().gemSpawn = this;
             occupied = true;
             respawnTimer = 15;
         } 
