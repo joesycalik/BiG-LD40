@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
+        m_instance = this;
         DontDestroyOnLoad(this.gameObject);
     } //End Awake
 } //End class

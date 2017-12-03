@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     public Transform feet;
     public Transform shootPoint;
     public Transform gemPoint;
+    public Transform bagPoint;
+    public float gemBagScale = 0.7f;
     public bool facingRight = true;
     public float currentSpeedMultiplier = 1f;
     public float maxRunSpeed = 10f;
@@ -164,14 +166,14 @@ public class Player : MonoBehaviour
             projectile.player = this;
             var force = projectileForce * new Vector3(facingRight ? 1 : -1, 0, 0);
             projectile.GetComponent<Rigidbody2D>().AddForce(force);
-            nextFireTime = Time.time + fireRate;
+            nextFireTime = Time.time + fireRate * (gems.Count + 1);
         }
     }
 
     public void GetHit()
     {
         if (isInvulnerable) return;
-        GameSoundManager.instance.PlayHit();
+        if (gems.Count == 0) GameSoundManager.instance.PlayHit();
         if (animator != null) animator.SetTrigger("Hit");
         LoseGem();
         pauseTimeLeft = hitPauseDuration;
@@ -184,6 +186,7 @@ public class Player : MonoBehaviour
         GameSoundManager.instance.PlayGetGem();
         gems.Add(gem);
         gem.HoldBy(gemPoint);
+        gem.gameObject.SetActive(false);
 
         if (gem.gemSpawn.occupied == true)
         {
@@ -192,6 +195,7 @@ public class Player : MonoBehaviour
         }
         
         UpdateSpeedMultiplier();
+        UpdateBagSize();
         levelManager.GemCounts[playerID - 1].text = gems.Count.ToString();
         if (gems.Count == 10)
         {
@@ -205,14 +209,21 @@ public class Player : MonoBehaviour
         GameSoundManager.instance.PlayLoseGem();
         var gem = gems[0];
         gems.RemoveAt(0);
+        gem.gameObject.SetActive(true);
         gem.Release();
         UpdateSpeedMultiplier();
+        UpdateBagSize();
         levelManager.GemCounts[playerID - 1].text = gems.Count.ToString();
     }
 
     private void UpdateSpeedMultiplier()
     {
         currentSpeedMultiplier = (gems.Count == 0) ? 1 : gemSpeedCurve.Evaluate(gems.Count);
+    }
+
+    private void UpdateBagSize()
+    {
+        bagPoint.localScale = new Vector3(1 + (gemBagScale * gems.Count), 1 + (gemBagScale * gems.Count), 1);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -238,6 +249,8 @@ public class Player : MonoBehaviour
       
         transform.position = new Vector3(spawnpoint.transform.position.x, spawnpoint.transform.position.y, spawnpoint.transform.position.z);
         invulnerableTimeLeft = invulnerableDuration;
+        UpdateSpeedMultiplier();
+        UpdateBagSize();
     }
 
 }

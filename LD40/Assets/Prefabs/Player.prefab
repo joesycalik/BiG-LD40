@@ -59,6 +59,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1229379775852194
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4263364780285916}
+  m_Layer: 0
+  m_Name: Bag
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1312370983470702
 GameObject:
   m_ObjectHideFlags: 0
@@ -122,7 +137,7 @@ GameObject:
   - component: {fileID: 4011356047382276}
   - component: {fileID: 212099453560582414}
   m_Layer: 0
-  m_Name: Bag
+  m_Name: BagSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -326,10 +341,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1437779937671920}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.9, y: -0.03, z: -0}
-  m_LocalScale: {x: 0.5279265, y: 0.5278949, z: 0.52789974}
+  m_LocalPosition: {x: -2.9000053, y: 0.31, z: -0}
+  m_LocalScale: {x: 0.5279265, y: 0.52789485, z: 0.5278997}
   m_Children: []
-  m_Father: {fileID: 4394818045276172}
+  m_Father: {fileID: 4263364780285916}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4084653733407714
@@ -372,6 +387,20 @@ Transform:
   m_Father: {fileID: 4442255854417604}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90.828}
+--- !u!4 &4263364780285916
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1229379775852194}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4011356047382276}
+  m_Father: {fileID: 4394818045276172}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4394818045276172
 Transform:
   m_ObjectHideFlags: 1
@@ -382,7 +411,7 @@ Transform:
   m_LocalPosition: {x: 0.010253906, y: 0.43631887, z: -0.0035756752}
   m_LocalScale: {x: 0.14516303, y: 0.88620913, z: 1}
   m_Children:
-  - {fileID: 4011356047382276}
+  - {fileID: 4263364780285916}
   m_Father: {fileID: 4994520536917528}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -677,6 +706,8 @@ MonoBehaviour:
   feet: {fileID: 4441173471510698}
   shootPoint: {fileID: 4525256838714490}
   gemPoint: {fileID: 4496533201411002}
+  bagPoint: {fileID: 4263364780285916}
+  gemBagScale: 0.7
   facingRight: 1
   currentSpeedMultiplier: 1
   maxRunSpeed: 10

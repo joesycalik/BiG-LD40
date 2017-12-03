@@ -31,6 +31,11 @@ public class GameSoundManager : MonoBehaviour
 
     public void Awake()
     {
+        if (m_instance != null && m_instance != this)
+        {
+            DestroyObject(gameObject);
+            return;
+        }
         m_instance = this;
         DontDestroyOnLoad(gameObject);
     }
