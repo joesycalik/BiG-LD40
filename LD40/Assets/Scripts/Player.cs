@@ -202,11 +202,17 @@ public class Player : MonoBehaviour
 
     public void Respawn()
     {
+        foreach (var gem in gems)
+        {
+            gem.transform.SetParent(null);
+            gem.Respawn();
+        }
+        gems.Clear();
         GameSoundManager.instance.PlayRespawn();
         var spawnpoint = GameObject.FindGameObjectWithTag("Spawnpoint");
         if (spawnpoint == null) Debug.LogError("Can't find an GameObject tagged SpawnPoint", this);
-        
-        transform.position =new Vector3(spawnpoint.transform.position.x, spawnpoint.transform.position.y, spawnpoint.transform.position.z);
+      
+        transform.position = new Vector3(spawnpoint.transform.position.x, spawnpoint.transform.position.y, spawnpoint.transform.position.z);
     }
 
 }
