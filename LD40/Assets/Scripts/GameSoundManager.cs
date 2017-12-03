@@ -11,6 +11,7 @@ public class GameSoundManager : MonoBehaviour
     public AudioClip getGemSound;
     public AudioClip loseGemSound;
     public AudioClip respawnSound;
+    public AudioClip countdownSound;
 
     private static GameSoundManager m_instance = null;
     public static GameSoundManager instance
@@ -80,6 +81,11 @@ public class GameSoundManager : MonoBehaviour
     public void PlayRespawn()
     {
         Play(respawnSound);
+    }
+
+    public void PlayCountdown()
+    {
+        Play(countdownSound);
     }
 
 }

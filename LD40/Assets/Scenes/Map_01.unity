@@ -1988,7 +1988,7 @@ MonoBehaviour:
   - {fileID: 1204110502}
   - {fileID: 1770366599}
   - {fileID: 273112848}
-  timeLeft: 60
+  timeLeft: 120
   timerText: {fileID: 2077801547}
   playerManager: {fileID: 1566992084}
   gemSpawns:
