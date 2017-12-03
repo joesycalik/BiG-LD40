@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4646065918671528}
   - component: {fileID: 82145138307023424}
+  - component: {fileID: 114840331876276738}
   m_Layer: 0
   m_Name: GameSoundManager
   m_TagString: Untagged
@@ -120,3 +121,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114840331876276738
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1733110703235586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7004b70360a67f04eb4d8e8f93805998, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 82145138307023424}
+  jumpSound: {fileID: 8300000, guid: 8cf600c538c92da40b4931d8e6890176, type: 3}
+  fireSound: {fileID: 8300000, guid: 5c30f7a270657a147beb3961890f9db2, type: 3}
+  hitSound: {fileID: 8300000, guid: 8f2147c7e81ef664589401b0cac2da6c, type: 3}
+  getGemSound: {fileID: 8300000, guid: fbbdcd89ed5e5b04b8be0142ae543340, type: 3}
+  loseGemSound: {fileID: 0}
+  respawnSound: {fileID: 0}

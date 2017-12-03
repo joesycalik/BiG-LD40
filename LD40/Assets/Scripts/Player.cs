@@ -95,7 +95,7 @@ public class Player : MonoBehaviour
         isGrounded = CheckGround();
         if (isGrounded && !wasGrounded) jumpsLeft = 1;
         if (animator != null) animator.SetFloat("vSpeed", rb.velocity.y);
-        horizontal = Input.GetAxis(horizontalName);
+        var horizontal = Input.GetAxis(horizontalName);
         Move(horizontal, jump);
         if (fire) Fire();
         jump = false;
@@ -112,17 +112,8 @@ public class Player : MonoBehaviour
         return false;
     }
 
-    //// Debug:
-    private float horizontal;
-    private float moveSpeed;
-    //private void OnGUI()
-    //{
-    //    GUILayout.Label("moveSpeed=" + moveSpeed + ", horiz=" + horizontal);
-    //}
-
     public void Move(float moveSpeed, bool jump)
     {
-        this.moveSpeed = moveSpeed;
         if (isGrounded || Mathf.Abs(moveSpeed) >= 0.1f)
         {
             // Move:
@@ -140,6 +131,7 @@ public class Player : MonoBehaviour
             // Jump:
             isGrounded = false;
             rb.AddForce(new Vector2(0, jumpForce * currentSpeedMultiplier));
+            GameSoundManager.instance.PlayJump();
             jumpsLeft--;
         }
     }
@@ -154,8 +146,9 @@ public class Player : MonoBehaviour
 
     private void Fire()
     {
-        if (Time.time >= nextFireTime) // && gems.Count > 0)
+        if (Time.time >= nextFireTime) // && gems.Count > 0) // Can still fire without gems.
         {
+            GameSoundManager.instance.PlayFire();
             if (animator != null) animator.SetTrigger("Fire");
             var projectile = Instantiate<Projectile>(projectilePrefab, shootPoint.transform.position, shootPoint.transform.rotation);
             projectile.player = this;
@@ -167,6 +160,7 @@ public class Player : MonoBehaviour
 
     public void GetHit()
     {
+        GameSoundManager.instance.PlayHit();
         if (animator != null) animator.SetTrigger("Hit");
         LoseGem();
         pauseTimeLeft = hitPauseDuration;
@@ -175,6 +169,7 @@ public class Player : MonoBehaviour
     public void GainGem(Gem gem)
     {
         if (gem == null || !gem.isAvailable) return;
+        GameSoundManager.instance.PlayGetGem();
         gems.Add(gem);
         gem.HoldBy(gemPoint);
         UpdateSpeedMultiplier();
@@ -184,6 +179,7 @@ public class Player : MonoBehaviour
     public void LoseGem()
     {
         if (gems.Count == 0) return;
+        GameSoundManager.instance.PlayLoseGem();
         var gem = gems[0];
         gems.RemoveAt(0);
         gem.Release();
@@ -206,6 +202,7 @@ public class Player : MonoBehaviour
 
     public void Respawn()
     {
+        GameSoundManager.instance.PlayRespawn();
         var spawnpoint = GameObject.FindGameObjectWithTag("Spawnpoint");
         if (spawnpoint == null) Debug.LogError("Can't find an GameObject tagged SpawnPoint", this);
         
