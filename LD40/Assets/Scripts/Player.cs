@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
         new Keyframe(1, 0.8f),
         new Keyframe(5, 0.5f));
     public float hitPauseDuration = 1;
+    public float invulnerableDuration = 2;
 
     public string horizontalName { get { return "Player" + playerID + "Horizontal"; } }
     public string verticalName { get { return "Player" + playerID + "Vertical"; } }
@@ -34,14 +35,15 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private bool jump = false;
-    public int jumpsLeft = 2;
+    private int jumpsLeft = 2;
     private bool fire = false;
     private float nextFireTime;
     private float pauseTimeLeft = 0;
     private bool hasSetPlayerNumber = false;
     private ParticleSystem fireParticleSystem;
     private LevelManager levelManager;
-
+    private float invulnerableTimeLeft = 0;
+    private bool isInvulnerable { get { return invulnerableTimeLeft > 0; } }
     
     private void Awake()
     {
@@ -83,6 +85,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (invulnerableTimeLeft > 0) invulnerableTimeLeft -= Time.deltaTime;
         if (!jump) jump = Input.GetButtonDown(jumpButtonName);
         if (!fire) fire = (playerID == 1 && Input.GetButtonDown(fireButtonName)) || (Mathf.Abs(Input.GetAxis(fireButtonName)) > 0);
     }
@@ -167,10 +170,12 @@ public class Player : MonoBehaviour
 
     public void GetHit()
     {
+        if (isInvulnerable) return;
         GameSoundManager.instance.PlayHit();
         if (animator != null) animator.SetTrigger("Hit");
         LoseGem();
         pauseTimeLeft = hitPauseDuration;
+        invulnerableTimeLeft = invulnerableDuration;
     }
 
     public void GainGem(Gem gem)
@@ -228,6 +233,7 @@ public class Player : MonoBehaviour
         if (spawnpoint == null) Debug.LogError("Can't find an GameObject tagged SpawnPoint", this);
       
         transform.position = new Vector3(spawnpoint.transform.position.x, spawnpoint.transform.position.y, spawnpoint.transform.position.z);
+        invulnerableTimeLeft = invulnerableDuration;
     }
 
 }
