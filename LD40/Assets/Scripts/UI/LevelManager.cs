@@ -9,7 +9,7 @@ public class LevelManager : MonoBehaviour
 
     GameManager manager;
     public Text[] GemCounts;
-    public static float timeLeft = 5;
+    public static float timeLeft = 120;
     public Text timerText;
     PlayerManager playerManager;
     public GemSpawn[] gemSpawns;
