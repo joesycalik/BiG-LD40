@@ -4,7 +4,7 @@ public class GameSoundManager : MonoBehaviour
 {
 
     public AudioSource audioSource;
-    public AudioClip jumpSound;
+    public AudioClip[] jumpSounds;
     public AudioClip jumpLandSound;
     public AudioClip fireSound;
     public AudioClip hitSound;
@@ -47,10 +47,10 @@ public class GameSoundManager : MonoBehaviour
         if (clip != null) audioSource.PlayOneShot(clip);
     }
 
-    public void PlayJump()
+    public void PlayJump(int jump)
     {
         //Play(jumpSound);
-        if (jumpSound != null) audioSource.PlayOneShot(jumpSound, 0.5f);
+        if (jumpSounds != null) audioSource.PlayOneShot(jumpSounds[jump], 0.5f);
     }
 
     public void PlayJumpLand()

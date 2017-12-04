@@ -45,6 +45,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private bool jump = false;
+    private int maxJumps = 2;
     private int jumpsLeft = 2;
     private bool fire = false;
     private float nextFireTime;
@@ -155,7 +156,7 @@ public class Player : MonoBehaviour
             isGrounded = false;
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(new Vector2(0, jumpForce * currentSpeedMultiplier));
-            GameSoundManager.instance.PlayJump();
+            GameSoundManager.instance.PlayJump(maxJumps - jumpsLeft);
             jumpsLeft--;
         }
     }
