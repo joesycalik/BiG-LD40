@@ -770,12 +770,12 @@ Prefab:
     - target: {fileID: 114458373006659016, guid: c6952ea84e6b12a41859cc84930f31aa,
         type: 2}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.78431374
       objectReference: {fileID: 0}
     - target: {fileID: 114458373006659016, guid: c6952ea84e6b12a41859cc84930f31aa,
         type: 2}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.9411765
       objectReference: {fileID: 0}
     - target: {fileID: 224249748352710504, guid: c6952ea84e6b12a41859cc84930f31aa,
         type: 2}
