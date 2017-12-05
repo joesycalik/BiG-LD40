@@ -458,10 +458,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29556bd838ef99b43b55d2fd9a074246, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: 1
+  playerID: 0
+  tintableSprite: {fileID: 0}
   feet: {fileID: 4930490969181062}
   shootPoint: {fileID: 4976378123172428}
   gemPoint: {fileID: 4536628653406052}
+  bagPoint: {fileID: 0}
+  gemBagScale: 0.7
   facingRight: 1
   currentSpeedMultiplier: 1
   maxRunSpeed: 10
@@ -498,6 +501,12 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  hitPauseDuration: 1
+  invulnerableDuration: 2
+  gemsCollected: 0
+  hitsLanded: 0
+  hitsTaken: 0
+  deaths: 0
 --- !u!212 &212003725640942822
 SpriteRenderer:
   m_ObjectHideFlags: 1
