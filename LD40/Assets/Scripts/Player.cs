@@ -100,7 +100,8 @@ public class Player : MonoBehaviour
     {
         if (invulnerableTimeLeft > 0) invulnerableTimeLeft -= Time.deltaTime;
         if (!jump) jump = Input.GetButtonDown(jumpButtonName);
-        if (!fire) fire = (playerID == 1 && Input.GetButtonDown(fireButtonName)) || (Mathf.Abs(Input.GetAxis(fireButtonName)) > 0);
+        //--- Right trigger axis doesn't work in WebGL: if (!fire) fire = (playerID == 1 && Input.GetButtonDown(fireButtonName)) || (Mathf.Abs(Input.GetAxis(fireButtonName)) > 0);
+        if (!fire) fire = Input.GetButtonDown(fireButtonName) || (Mathf.Abs(Input.GetAxis(fireButtonName)) > 0);
     }
 
     private void FixedUpdate()
