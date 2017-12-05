@@ -24,4 +24,9 @@ public class MainMenu : MonoBehaviour {
         GameManager.instance.playerCount = (int) val;
         playerCountText.text = "Player Count: " + val;
     }
+
+    public void onQuit()
+    {
+        Application.Quit();
+    }
 }
