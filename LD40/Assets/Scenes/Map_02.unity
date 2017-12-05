@@ -4055,7 +4055,7 @@ MonoBehaviour:
   - {fileID: 1423305588}
   - {fileID: 1015692446}
   SinglePlayerMode: 0
-  GemsToWin: 9
+  GemsToWin: 8
   gemWinConReached: 0
 --- !u!4 &1779129304
 Transform:

@@ -1764,12 +1764,12 @@ Prefab:
     - target: {fileID: 224249748352710504, guid: c6952ea84e6b12a41859cc84930f31aa,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 195
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 224249748352710504, guid: c6952ea84e6b12a41859cc84930f31aa,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 195
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 1766242571963994, guid: c6952ea84e6b12a41859cc84930f31aa, type: 2}
       propertyPath: m_IsActive
@@ -2570,7 +2570,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1084206447}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.800003, y: 270, z: 0}
+  m_LocalPosition: {x: 0, y: 235, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2140358358}
@@ -2578,7 +2578,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 1.800003, y: -30}
+  m_AnchoredPosition: {x: 0, y: -65}
   m_SizeDelta: {x: 259.17, y: 36.29}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1084206449
@@ -2966,7 +2966,7 @@ MonoBehaviour:
   - {fileID: 642557025}
   - {fileID: 841156238}
   GemsLeft: {fileID: 1735233100}
-  timeLeft: 30
+  timeLeft: 45
   timerText: {fileID: 1385007848}
   playerManager: {fileID: 2050502630}
   gemSpawns:
@@ -3951,7 +3951,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1735233098}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.800003, y: 235, z: 0}
+  m_LocalPosition: {x: 0, y: 200, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2140358358}
@@ -3959,7 +3959,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 1.8, y: -65}
+  m_AnchoredPosition: {x: 0, y: -100}
   m_SizeDelta: {x: 160, y: 37.52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1735233100
