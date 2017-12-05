@@ -2000,7 +2000,7 @@ MonoBehaviour:
   - {fileID: 181718559}
   - {fileID: 451107429}
   GemsLeft: {fileID: 613015944}
-  timeLeft: 120
+  timeLeft: 90
   timerText: {fileID: 282131937}
   playerManager: {fileID: 1927425934}
   gemSpawns:
@@ -2019,7 +2019,7 @@ MonoBehaviour:
   - {fileID: 35767367}
   - {fileID: 1930393234}
   SinglePlayerMode: 1
-  GemsToWin: 10
+  GemsToWin: 8
   gemWinConReached: 0
 --- !u!4 &813360848 stripped
 Transform:

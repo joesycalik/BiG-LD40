@@ -7,6 +7,10 @@ public class MapSelect : MonoBehaviour {
 
 	public void LoadOnClick(int level)
     {
+        if (level == 6 || level == 7)
+        {
+            GameManager.instance.playerCount = 1;
+        }
         SceneManager.LoadScene(level);
     }
 }
