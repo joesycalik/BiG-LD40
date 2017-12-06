@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
         }
     }
     public int playerCount = 2;
+    public float camSpeed = 0.4f;
     public Results[] gameResults;
 
 

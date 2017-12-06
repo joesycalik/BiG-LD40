@@ -25,6 +25,7 @@ namespace Assets.Scripts.Player
         {
             yield return null;
             var p = GameObject.FindGameObjectsWithTag("Player");
+            camSpeed = GameManager.instance.camSpeed;
             Players = new List<Transform>();
             for (int i = 0; i < p.Length; i++)
             {

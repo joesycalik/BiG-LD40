@@ -1955,6 +1955,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114087194022564520, guid: 6d97b80f405e3b542a89194bb249a2c1,
+        type: 2}
+      propertyPath: camSpeed
+      value: 0.4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6d97b80f405e3b542a89194bb249a2c1, type: 2}
   m_IsPrefabParent: 0
