@@ -629,7 +629,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: faadda4a7a6dada4cae95fb50a78a22f, type: 2}
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -661,7 +661,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0061166286, y: 1.085125}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -672,7 +672,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5664711, y: 3.5686445}
+  m_Size: {x: 1.55, y: 3.55}
   m_EdgeRadius: 0
 --- !u!82 &82065266231112196
 AudioSource:
@@ -833,6 +833,10 @@ MonoBehaviour:
     m_RotationOrder: 0
   hitPauseDuration: 1
   invulnerableDuration: 2
+  gemsCollected: 0
+  hitsLanded: 0
+  hitsTaken: 0
+  deaths: 0
 --- !u!198 &198290307877556600
 ParticleSystem:
   m_ObjectHideFlags: 1
